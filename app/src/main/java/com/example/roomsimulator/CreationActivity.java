@@ -1,6 +1,8 @@
 package com.example.roomsimulator;
 
+import android.content.Intent;
 import android.text.InputType;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,18 +15,21 @@ import java.util.ArrayList;
 public class CreationActivity extends AppCompatActivity {
 
     private EditText inputText;
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
-    ArrayList<RoomModel> arrayList = new ArrayList<>();
-    MainAdapter adapter;
+    private ArrayList<RoomModel> arrayList;
 
-    Button buttonNouvellePiece;
+    private MainAdapter adapter;
+
+    private Button buttonNouvellePiece;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation);
 
+        //Récupère les rooms
+        arrayList = RoomManager.getInstance().getArrayListRooms();
 
 
         inputText = findViewById(R.id.textNouvellePiece);
@@ -33,12 +38,26 @@ public class CreationActivity extends AppCompatActivity {
         buttonNouvellePiece = findViewById(R.id.buttonNouvellePiece);
 
         buttonNouvellePiece.setOnClickListener((v)->{
-            RoomModel model = new RoomModel();
-            model.setName(String.valueOf(inputText.getText()));
+            RoomModel model = new RoomModel(String.valueOf(inputText.getText()));
             arrayList.add(model);
             getRoomList();
 
         });
+
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(CreationActivity.this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent ic = new Intent(CreationActivity.this, EditRoomActivity.class);
+                ic.putExtra("roomSelected", String.valueOf(position));
+                startActivity(ic);
+
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+                // do whatever
+            }
+        }));
 
 
 
