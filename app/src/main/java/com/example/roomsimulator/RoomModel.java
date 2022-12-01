@@ -41,4 +41,20 @@ public class RoomModel {
     public ImageView getImageOuest() {
         return imageOuest;
     }
+
+    public void setImageNord(ImageView imageNord) {
+        this.imageNord = imageNord;
+    }
+
+    public void setImageEst(ImageView imageEst) {
+        this.imageEst = imageEst;
+    }
+
+    public void setImageSud(ImageView imageSud) {
+        this.imageSud = imageSud;
+    }
+
+    public void setImageOuest(ImageView imageOuest) {
+        this.imageOuest = imageOuest;
+    }
 }

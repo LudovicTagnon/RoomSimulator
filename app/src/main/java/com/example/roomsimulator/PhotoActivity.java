@@ -14,6 +14,7 @@ import java.io.IOException;
 public class PhotoActivity extends AppCompatActivity {
 
     private int roomIndex;
+    private String direction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +24,8 @@ public class PhotoActivity extends AppCompatActivity {
         //Récupère l'index de la pièce sélectionnée dans la recyclerview
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            String value = extras.getString("roomIndex");
-            roomIndex = Integer.parseInt(value);
+            roomIndex = Integer.parseInt(extras.getString("roomIndex"));
+            direction = extras.getString("direction");
         }
 
         Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -47,8 +48,15 @@ public class PhotoActivity extends AppCompatActivity {
                 fos = openFileOutput("image.data", MODE_APPEND);
                 imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
 
-
-                RoomManager.getInstance().getArrayListRooms().get(roomIndex).getImageNord().setImageBitmap(imageBitmap);
+                if(direction.equals("N")){
+                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getImageNord().setImageBitmap(imageBitmap);
+                }else if(direction.equals("E")){
+                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getImageEst().setImageBitmap(imageBitmap);
+                }else if(direction.equals("S")){
+                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getImageSud().setImageBitmap(imageBitmap);
+                }else if(direction.equals("O")){
+                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getImageOuest().setImageBitmap(imageBitmap);
+                }
 
                 fos.flush();
                 fos.close();
