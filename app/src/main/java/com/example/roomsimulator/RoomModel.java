@@ -7,7 +7,11 @@ import java.util.ArrayList;
 public class RoomModel {
     private String name;
 
-    private ArrayList<ImageView> arrayListMurs = new ArrayList<>();
+    private ImageView imageNord;
+    private ImageView imageEst;
+    private ImageView imageSud;
+    private ImageView imageOuest;
+
 
     public RoomModel(String name) {
         this.name = name;
@@ -22,8 +26,19 @@ public class RoomModel {
     }
 
 
-    public ArrayList<ImageView> getArrayListMurs() {
-        return arrayListMurs;
+    public ImageView getImageNord() {
+        return imageNord;
     }
 
+    public ImageView getImageEst() {
+        return imageEst;
+    }
+
+    public ImageView getImageSud() {
+        return imageSud;
+    }
+
+    public ImageView getImageOuest() {
+        return imageOuest;
+    }
 }

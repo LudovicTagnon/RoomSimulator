@@ -5,6 +5,91 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".EditRoomActivity">
+        tools:context=".EditRoomActivity"
+>
+
+    <Button
+            android:text="Ajouter Photo Mur Nord"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:id="@+id/buttonAjouterPhotoN"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="136dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            android:backgroundTint="@android:color/white"
+            android:textColor="#ff0000"
+            tools:ignore="TextContrastCheck"
+    />
+    <Button
+            android:text="Ajouter Photo Mur Sud"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:id="@+id/buttonAjouterPhotoS"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintTop_toBottomOf="@+id/buttonAjouterPhotoN"
+            android:layout_marginTop="104dp"
+            android:backgroundTint="@android:color/white"
+            android:textColor="#ff0000"
+    />
+    <Button
+            android:text="Ajouter Photo Mur Est"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:id="@+id/buttonAjouterPhotoE"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="248dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@android:color/white"
+            android:textColor="#ff0000"
+    />
+    <Button
+            android:text="Ajouter Photo Mur Ouest"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:id="@+id/buttonAjouterPhotoO"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="248dp"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="@android:color/white"
+            android:textColor="#ff0000"
+    />
+    <ImageView
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            app:srcCompat="@drawable/ic_launcher_background"
+            android:id="@+id/imageViewNord"
+            tools:layout_editor_absoluteY="136dp"
+            tools:layout_editor_absoluteX="145dp"
+    />
+    <ImageView
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            app:srcCompat="@drawable/ic_launcher_background"
+            android:id="@+id/imageViewEst"
+            tools:layout_editor_absoluteY="248dp"
+            tools:layout_editor_absoluteX="270dp"
+    />
+    <ImageView
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            app:srcCompat="@drawable/ic_launcher_background"
+            android:id="@+id/imageViewSud"
+            tools:layout_editor_absoluteY="365dp"
+            tools:layout_editor_absoluteX="145dp"
+    />
+    <ImageView
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            app:srcCompat="@drawable/ic_launcher_background"
+            android:id="@+id/imageViewOuest"
+            tools:layout_editor_absoluteY="248dp"
+            tools:layout_editor_absoluteX="16dp"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
