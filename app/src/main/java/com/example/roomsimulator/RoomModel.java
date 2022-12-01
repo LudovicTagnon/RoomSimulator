@@ -8,18 +8,19 @@ import java.util.ArrayList;
 public class RoomModel {
     private String name;
 
-    private ImageView imageNord = null;
-    private ImageView imageEst = null;
-    private ImageView imageSud = null;
-    private ImageView imageOuest = null;
+    private WallModel murNord;
+    private WallModel murEst;
+    private WallModel murSud;
+    private WallModel murOuest;
 
-    private Bitmap imageNordBitmap;
-    private Bitmap imageEstBitmap;
-    private Bitmap imageSudBitmap;
-    private Bitmap imageOuestBitmap;
 
     public RoomModel(String name) {
         this.name = name;
+        this.murNord = new WallModel("N");
+        this.murEst = new WallModel("E");
+        this.murSud = new WallModel("S");
+        this.murOuest = new WallModel("O");
+
     }
 
     public String getName() {
@@ -31,67 +32,35 @@ public class RoomModel {
     }
 
 
-    public ImageView getImageNord() {
-        return imageNord;
+    public WallModel getMurNord() {
+        return murNord;
     }
 
-    public ImageView getImageEst() {
-        return imageEst;
+    public WallModel getMurEst() {
+        return murEst;
     }
 
-    public ImageView getImageSud() {
-        return imageSud;
+    public WallModel getMurSud() {
+        return murSud;
     }
 
-    public ImageView getImageOuest() {
-        return imageOuest;
+    public WallModel getMurOuest() {
+        return murOuest;
     }
 
-    public void setImageNord(ImageView imageNord) {
-        this.imageNord = imageNord;
+    public void setMurNord(WallModel murNord) {
+        this.murNord = murNord;
     }
 
-    public void setImageEst(ImageView imageEst) {
-        this.imageEst = imageEst;
+    public void setMurEst(WallModel murEst) {
+        this.murEst = murEst;
     }
 
-    public void setImageSud(ImageView imageSud) {
-        this.imageSud = imageSud;
+    public void setMurSud(WallModel murSud) {
+        this.murSud = murSud;
     }
 
-    public void setImageOuest(ImageView imageOuest) {
-        this.imageOuest = imageOuest;
-    }
-
-    public Bitmap getImageNordBitmap() {
-        return imageNordBitmap;
-    }
-
-    public Bitmap getImageEstBitmap() {
-        return imageEstBitmap;
-    }
-
-    public Bitmap getImageSudBitmap() {
-        return imageSudBitmap;
-    }
-
-    public Bitmap getImageOuestBitmap() {
-        return imageOuestBitmap;
-    }
-
-    public void setImageNordBitmap(Bitmap imageNordBitmap) {
-        this.imageNordBitmap = imageNordBitmap;
-    }
-
-    public void setImageEstBitmap(Bitmap imageEstBitmap) {
-        this.imageEstBitmap = imageEstBitmap;
-    }
-
-    public void setImageSudBitmap(Bitmap imageSudBitmap) {
-        this.imageSudBitmap = imageSudBitmap;
-    }
-
-    public void setImageOuestBitmap(Bitmap imageOuestBitmap) {
-        this.imageOuestBitmap = imageOuestBitmap;
+    public void setMurOuest(WallModel murOuest) {
+        this.murOuest = murOuest;
     }
 }

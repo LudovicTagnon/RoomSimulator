@@ -8,6 +8,7 @@ import android.graphics.*;
 import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.*;
+import android.widget.Button;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +24,8 @@ public class AddDoorActivity extends AppCompatActivity {
     protected Rect rect;
     protected CanvasView canvasView;
     protected SurfaceView surfaceView;
+
+    private Button buttonConfirmer;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -59,6 +62,25 @@ public class AddDoorActivity extends AppCompatActivity {
         surfaceView.setZOrderOnTop(true);
         surfaceView.getHolder().setFormat(PixelFormat.TRANSPARENT);
 
+        buttonConfirmer = findViewById(R.id.buttonConfirmerPorte);
+
+        buttonConfirmer.setOnClickListener((b)->{
+                switch (direction) {
+                    case "N":
+                        arrayList.get(roomIndex).getMurNord().getPortes().add(rect);
+                        break;
+                    case "E":
+                        arrayList.get(roomIndex).getMurEst().getPortes().add(rect);
+                        break;
+                    case "S":
+                        arrayList.get(roomIndex).getMurSud().getPortes().add(rect);
+                        break;
+                    case "O":
+                        arrayList.get(roomIndex).getMurOuest().getPortes().add(rect);
+                        break;
+                }
+        });
+
 
         imageView.setOnTouchListener(
                 new View.OnTouchListener() {
@@ -75,37 +97,6 @@ public class AddDoorActivity extends AppCompatActivity {
 
                             canvasView.reDraw();
 
-
-                        }
-
-                        if(event.getAction() == android.view.MotionEvent.ACTION_UP){
-                            Log.d("TouchTest", "Touch up");
-
-                            View z = imageView.getRootView();
-                            z.setDrawingCacheEnabled(true);
-                            z.buildDrawingCache(true);
-
-                            Bitmap bm0 = Bitmap.createBitmap(z.getDrawingCache());
-                            Bitmap bm = Bitmap.createBitmap(bm0, (int) (rect.left ), (int) (rect.top + imageView.getY() + 250), rect.width(), rect.height());
-
-
-                            ImageView imageViewSelection = new ImageView(AddDoorActivity.this);
-                            imageViewSelection.setImageBitmap(bm);
-
-                            Dialog dialog = new Dialog(AddDoorActivity.this);
-                            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                                @Override
-                                public void onDismiss(DialogInterface dialog) {
-
-                                }
-                            });
-
-                            dialog.addContentView(imageViewSelection, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                            dialog.show();
-
                         }
 
                         return true;
@@ -115,37 +106,30 @@ public class AddDoorActivity extends AppCompatActivity {
     }
 
     public void setNord(){
-        if(arrayList.get(roomIndex).getImageNordBitmap() != null){
-            imageView.setImageBitmap(arrayList.get(roomIndex).getImageNordBitmap());
-            imageView.getLayoutParams().height = 1080;
-            imageView.getLayoutParams().width = 1080;
+        if(arrayList.get(roomIndex).getMurNord().getBitmap() != null){
+            imageView.setImageBitmap(arrayList.get(roomIndex).getMurNord().getBitmap());
             this.direction = "N";
         }
     }
 
     public void setEst(){
-        if(arrayList.get(roomIndex).getImageEstBitmap() != null){
-            imageView.setImageBitmap(arrayList.get(roomIndex).getImageEstBitmap());
-            imageView.getLayoutParams().height = 1080;
-            imageView.getLayoutParams().width = 1080;
+        if(arrayList.get(roomIndex).getMurEst().getBitmap() != null){
+            imageView.setImageBitmap(arrayList.get(roomIndex).getMurEst().getBitmap());
             this.direction = "E";
         }
     }
 
     public void setSud(){
-        if(arrayList.get(roomIndex).getImageSudBitmap() != null){
-            imageView.setImageBitmap(arrayList.get(roomIndex).getImageSudBitmap());
-            imageView.getLayoutParams().height = 1080;
-            imageView.getLayoutParams().width = 1080;
+        if(arrayList.get(roomIndex).getMurSud().getBitmap() != null){
+            imageView.setImageBitmap(arrayList.get(roomIndex).getMurSud().getBitmap());
+
             this.direction = "S";
         }
     }
 
     public void setOuest(){
-        if(arrayList.get(roomIndex).getImageOuestBitmap() != null){
-            imageView.setImageBitmap(arrayList.get(roomIndex).getImageOuestBitmap());
-            imageView.getLayoutParams().height = 1080;
-            imageView.getLayoutParams().width = 1080;
+        if(arrayList.get(roomIndex).getMurOuest().getBitmap() != null){
+            imageView.setImageBitmap(arrayList.get(roomIndex).getMurOuest().getBitmap());
             this.direction = "O";
         }
     }

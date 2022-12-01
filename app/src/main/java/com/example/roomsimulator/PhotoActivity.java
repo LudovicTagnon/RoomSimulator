@@ -48,18 +48,19 @@ public class PhotoActivity extends AppCompatActivity {
                 fos = openFileOutput("image.data", MODE_APPEND);
                 imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
 
+
                 if(direction.equals("N")){
-                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getImageNord().setImageBitmap(imageBitmap);
-                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).setImageNordBitmap(imageBitmap);
+                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getMurNord().getImage().setImageBitmap(imageBitmap);
+                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getMurNord().setBitmap(imageBitmap);
                 }else if(direction.equals("E")){
-                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getImageEst().setImageBitmap(imageBitmap);
-                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).setImageEstBitmap(imageBitmap);
+                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getMurEst().getImage().setImageBitmap(imageBitmap);
+                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getMurEst().setBitmap(imageBitmap);
                 }else if(direction.equals("S")){
-                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getImageSud().setImageBitmap(imageBitmap);
-                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).setImageSudBitmap(imageBitmap);
+                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getMurSud().getImage().setImageBitmap(imageBitmap);
+                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getMurSud().setBitmap(imageBitmap);
                 }else if(direction.equals("O")){
-                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getImageOuest().setImageBitmap(imageBitmap);
-                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).setImageOuestBitmap(imageBitmap);
+                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getMurOuest().getImage().setImageBitmap(imageBitmap);
+                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getMurOuest().setBitmap(imageBitmap);
                 }
 
                 fos.flush();

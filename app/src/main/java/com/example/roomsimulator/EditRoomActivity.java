@@ -42,10 +42,10 @@ public class EditRoomActivity extends AppCompatActivity {
         arrayList = RoomManager.getInstance().getArrayListRooms();
 
         //Lie l'imageview xml à la variable imageview du room manager
-        arrayList.get(roomIndex).setImageNord(findViewById(R.id.imageViewNord));
-        arrayList.get(roomIndex).setImageEst(findViewById(R.id.imageViewEst));
-        arrayList.get(roomIndex).setImageSud(findViewById(R.id.imageViewSud));
-        arrayList.get(roomIndex).setImageOuest(findViewById(R.id.imageViewOuest));
+        arrayList.get(roomIndex).getMurNord().setImage(findViewById(R.id.imageViewNord));
+        arrayList.get(roomIndex).getMurEst().setImage(findViewById(R.id.imageViewEst));
+        arrayList.get(roomIndex).getMurSud().setImage(findViewById(R.id.imageViewSud));
+        arrayList.get(roomIndex).getMurOuest().setImage(findViewById(R.id.imageViewOuest));
 
         //Lie les boutons xml aux boutons du code
         Button buttonNord = findViewById(R.id.buttonAjouterPhotoN);
@@ -55,20 +55,21 @@ public class EditRoomActivity extends AppCompatActivity {
 
 
         //Affiche les images de chaque mur dans leur cadre respectif si elles existent
-        if(arrayList.get(roomIndex).getImageNordBitmap() != null) {
-            arrayList.get(roomIndex).getImageNord().setImageBitmap(arrayList.get(roomIndex).getImageNordBitmap());
+
+        if(arrayList.get(roomIndex).getMurNord().getBitmap() != null) {
+            arrayList.get(roomIndex).getMurNord().getImage().setImageBitmap(arrayList.get(roomIndex).getMurNord().getBitmap());
             buttonNord.setTextColor(Color.TRANSPARENT);
         }
-        if(arrayList.get(roomIndex).getImageEstBitmap() != null) {
-            arrayList.get(roomIndex).getImageEst().setImageBitmap(arrayList.get(roomIndex).getImageEstBitmap());
+        if(arrayList.get(roomIndex).getMurEst().getBitmap() != null) {
+            arrayList.get(roomIndex).getMurEst().getImage().setImageBitmap(arrayList.get(roomIndex).getMurEst().getBitmap());
             buttonEst.setTextColor(Color.TRANSPARENT);
         }
-        if(arrayList.get(roomIndex).getImageSudBitmap() != null) {
-            arrayList.get(roomIndex).getImageSud().setImageBitmap(arrayList.get(roomIndex).getImageSudBitmap());
+        if(arrayList.get(roomIndex).getMurSud().getBitmap() != null) {
+            arrayList.get(roomIndex).getMurSud().getImage().setImageBitmap(arrayList.get(roomIndex).getMurSud().getBitmap());
             buttonSud.setTextColor(Color.TRANSPARENT);
         }
-        if(arrayList.get(roomIndex).getImageOuestBitmap() != null) {
-            arrayList.get(roomIndex).getImageOuest().setImageBitmap(arrayList.get(roomIndex).getImageOuestBitmap());
+        if(arrayList.get(roomIndex).getMurOuest().getBitmap() != null) {
+            arrayList.get(roomIndex).getMurOuest().getImage().setImageBitmap(arrayList.get(roomIndex).getMurOuest().getBitmap());
             buttonOuest.setTextColor(Color.TRANSPARENT);
         }
 
