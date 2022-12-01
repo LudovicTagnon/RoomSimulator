@@ -7,17 +7,25 @@ import java.util.ArrayList;
 public class DoorModel {
 
     private Rect position;
-
-    private RoomModel nextRoom;
-
+    private String nextRoom;
     private boolean isAddedToView = false;
+
 
     public DoorModel(Rect position) {
         this.position = position;
+        this.isAddedToView = false;
     }
 
-    public DoorModel(Rect position, RoomModel nextRoom) {
+    public DoorModel(Rect position, String nextRoom) {
         this.position = position;
+        this.nextRoom = nextRoom;
+        this.isAddedToView = false;
+    }
+
+    public DoorModel() {
+    }
+
+    public DoorModel(String nextRoom) {
         this.nextRoom = nextRoom;
     }
 
@@ -26,7 +34,7 @@ public class DoorModel {
         return position;
     }
 
-    public RoomModel getNextRoom() {
+    public String getNextRoom() {
         return nextRoom;
     }
 
@@ -34,7 +42,7 @@ public class DoorModel {
         this.position = position;
     }
 
-    public void setNextRoom(RoomModel nextRoom) {
+    public void setNextRoom(String nextRoom) {
         this.nextRoom = nextRoom;
     }
 

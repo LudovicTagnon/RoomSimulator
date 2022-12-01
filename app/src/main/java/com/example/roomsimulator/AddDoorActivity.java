@@ -86,7 +86,7 @@ public class AddDoorActivity extends AppCompatActivity {
 
 
             if(rect != null && selectedRoom != null) {
-                DoorModel d = new DoorModel(rect, selectedRoom);
+                DoorModel d = new DoorModel(rect, selectedRoom.getName());
                 switch (direction) {
                     case "N":
                         arrayList.get(roomIndex).getMurNord().getPortes().add(d);

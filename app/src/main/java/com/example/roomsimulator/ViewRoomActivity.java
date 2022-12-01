@@ -83,12 +83,18 @@ public class ViewRoomActivity extends AppCompatActivity {
         setupPortes();
     }
 
-    private void ListenerPortes(ArrayList<Button> button) {
-        for (Button b: button) {
+    private void ListenerPortes(ArrayList<Button> buttons, WallModel Mur) {
+        for (Button b: buttons) {
             b.setOnClickListener((v)->{
                 Toast.makeText(ViewRoomActivity.this, "Porte", Toast.LENGTH_SHORT).show();
 
-                roomIndex = button.indexOf(b);
+                int buttonIndex = buttons.indexOf(b);
+
+                for (int i = 0; i < arrayList.size(); i++) {
+                    if(arrayList.get(i).getName().equals(Mur.getPortes().get(buttonIndex).getNextRoom())){
+                        this.roomIndex = i;
+                    }
+                }
                 setup();
 
             });
@@ -298,10 +304,10 @@ public class ViewRoomActivity extends AppCompatActivity {
         }
 
 
-        ListenerPortes(buttonPorteNord);
-        ListenerPortes(buttonPorteEst);
-        ListenerPortes(buttonPorteSud);
-        ListenerPortes(buttonPorteOuest);
+        ListenerPortes(buttonPorteNord, MurNord);
+        ListenerPortes(buttonPorteEst, MurEst);
+        ListenerPortes(buttonPorteSud, MurSud);
+        ListenerPortes(buttonPorteOuest, MurOuest);
 
 
     }

@@ -8,12 +8,18 @@ import java.util.ArrayList;
 
 public class WallModel {
     private String direction;
-    private ImageView image;
-    private Bitmap bitmap;
+    private ImageView image = null;
+    private Bitmap bitmap = null;
     private ArrayList<DoorModel> portes = new ArrayList<>();
 
     public WallModel(String direction) {
         this.direction = direction;
+    }
+
+    public WallModel(String direction, ImageView image, Bitmap bitmap) {
+        this.direction = direction;
+        this.image = image;
+        this.bitmap = bitmap;
     }
 
 
