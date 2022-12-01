@@ -261,7 +261,7 @@ public class ViewRoomActivity extends AppCompatActivity {
                             buttonPorteSud.get(i).setX(door.getPosition().left);
                             buttonPorteSud.get(i).setY(door.getPosition().top);
                             buttonPorteSud.get(i).setBackgroundColor(Color.YELLOW);
-                            Log.i("TEST", "X=" + buttonPorteSud.get(i).getX() + "Y=" + buttonPorteSud.get(i).getY() + "W=" + buttonPorteSud.get(i).getWidth() + "H=" + buttonPorteNord.get(i).getHeight());
+                            Log.i("TEST", "X=" + buttonPorteSud.get(i).getX() + "Y=" + buttonPorteSud.get(i).getY() + "W=" + buttonPorteSud.get(i).getWidth() + "H=" + buttonPorteSud.get(i).getHeight());
                             ViewRoomActivity.this.addContentView(buttonPorteSud.get(i), buttonPorteSud.get(i).getLayoutParams());
                             i++;
                             door.setAddedToView(true);
