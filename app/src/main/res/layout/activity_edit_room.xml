@@ -23,45 +23,52 @@
 
     />
 
-    <Button
-            android:text="Ajouter Photo Mur Nord"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
-            android:id="@+id/buttonAjouterPhotoN"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="136dp"
+    <ImageButton
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:id="@+id/buttonPorteEst"
+            tools:src="@drawable/door"
+            android:scaleType="fitXY"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:src="@drawable/door"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewSud"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="120dp"
+            android:layout_marginTop="112dp"/>
+    <ImageButton
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:id="@+id/buttonPorteOuest"
+            tools:src="@drawable/door"
+            android:scaleType="fitXY"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:src="@drawable/door"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewSud"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="120dp"
+            android:layout_marginTop="112dp"/>
+    <ImageButton
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:id="@+id/buttonPorteNord"
+            tools:src="@drawable/door"
+            android:scaleType="fitXY"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:src="@drawable/door"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.506"
-            android:backgroundTint="@android:color/transparent"
-            android:textColor="#000000"
-            tools:ignore="TextContrastCheck"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/buttonAjouterPhotoS"
+            android:layout_marginTop="56dp" app:layout_constraintHorizontal_bias="0.495"
     />
-    <Button
-            android:text="Ajouter Photo Mur Sud"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
-            android:id="@+id/buttonAjouterPhotoS"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.506"
-            app:layout_constraintTop_toBottomOf="@+id/buttonAjouterPhotoN"
-            android:layout_marginTop="104dp"
-            android:backgroundTint="@android:color/transparent"
-            android:textColor="#000000"
-    />
-    <Button
-            android:text="Ajouter Photo Mur Est"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
-            android:id="@+id/buttonAjouterPhotoE"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="248dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@android:color/transparent"
-            android:textColor="#000000"
-    />
+    <ImageButton
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:id="@+id/buttonPorteSud"
+            tools:src="@drawable/door"
+            android:scaleType="fitXY"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:src="@drawable/door"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonPorteNord" android:layout_marginTop="56dp"
+            app:layout_constraintHorizontal_bias="0.504"/>
     <Button
             android:text="Ajouter Photo Mur Ouest"
             android:layout_width="125dp"
@@ -69,10 +76,32 @@
             android:id="@+id/buttonAjouterPhotoO"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="248dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginTop="224dp"
+            android:layout_marginStart="12dp"
             android:backgroundTint="@android:color/transparent"
             android:textColor="#000000"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewEst" app:layout_constraintHorizontal_bias="0.0"/>
+    <ImageView
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            app:srcCompat="@drawable/ic_launcher_background"
+            android:id="@+id/imageViewOuest"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="224dp"
+            android:layout_marginStart="12dp"/>
+    <Button
+            android:text="Ajouter Photo Mur Nord"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:id="@+id/buttonAjouterPhotoN"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="96dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:backgroundTint="@android:color/transparent"
+            android:textColor="#000000"
+            tools:ignore="TextContrastCheck"
     />
     <ImageView
             android:layout_width="125dp"
@@ -82,17 +111,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="136dp"
-            app:layout_constraintHorizontal_bias="0.506"/>
-    <ImageView
-            android:layout_width="125dp"
-            android:layout_height="125dp"
-            app:srcCompat="@drawable/ic_launcher_background"
-            android:id="@+id/imageViewEst"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="248dp"
-            android:layout_marginEnd="16dp"/>
+            android:layout_marginTop="96dp"
+            app:layout_constraintHorizontal_bias="0.493"/>
     <ImageView
             android:layout_width="125dp"
             android:layout_height="125dp"
@@ -101,48 +121,40 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonAjouterPhotoN"
-            android:layout_marginTop="104dp"
-            app:layout_constraintHorizontal_bias="0.506"/>
+            android:layout_marginTop="128dp"
+    />
+    <Button
+            android:text="Ajouter Photo Mur Sud"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:id="@+id/buttonAjouterPhotoS"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonAjouterPhotoN"
+            android:layout_marginTop="128dp"
+            android:backgroundTint="@android:color/transparent"
+            android:textColor="#000000"
+    />
     <ImageView
             android:layout_width="125dp"
             android:layout_height="125dp"
             app:srcCompat="@drawable/ic_launcher_background"
-            android:id="@+id/imageViewOuest"
-            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/imageViewEst"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="248dp"
-            android:layout_marginStart="16dp"/>
-    <Button
-            android:text="AJOUTER PORTE MUR NORD"
-            android:layout_width="263dp"
-            android:layout_height="49dp"
-            android:id="@+id/buttonPorteNord"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonAjouterPhotoS"
-            android:layout_marginTop="36dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
-    <Button
-            android:text="AJOUTER PORTE MUR EST"
-            android:layout_width="263dp"
-            android:layout_height="49dp"
-            android:id="@+id/buttonPorteEst"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintTop_toBottomOf="@+id/buttonPorteOuest"/>
-    <Button
-            android:text="AJOUTER PORTE MUR SUD"
-            android:layout_width="263dp"
-            android:layout_height="49dp"
-            android:id="@+id/buttonPorteSud"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/buttonPorteNord"/>
-    <Button
-            android:text="AJOUTER PORTE MUR OUEST"
-            android:layout_width="263dp"
-            android:layout_height="49dp"
-            android:id="@+id/buttonPorteOuest"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonPorteSud"/>
+            android:layout_marginTop="224dp"
+            android:layout_marginEnd="16dp"/>
+    <Button
+            android:text="Ajouter Photo Mur Est"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:id="@+id/buttonAjouterPhotoE"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="224dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@android:color/transparent"
+            android:textColor="#000000"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

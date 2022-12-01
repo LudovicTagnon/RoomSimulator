@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -103,10 +104,10 @@ public class EditRoomActivity extends AppCompatActivity {
             buttonOuest.setTextColor(Color.TRANSPARENT);
         });
 
-        Button buttonPorteNord = findViewById(R.id.buttonPorteNord);
-        Button buttonPorteEst = findViewById(R.id.buttonPorteEst);
-        Button buttonPorteSud = findViewById(R.id.buttonPorteSud);
-        Button buttonPorteOuest = findViewById(R.id.buttonPorteOuest);
+        ImageButton buttonPorteNord = findViewById(R.id.buttonPorteNord);
+        ImageButton buttonPorteEst = findViewById(R.id.buttonPorteEst);
+        ImageButton buttonPorteSud = findViewById(R.id.buttonPorteSud);
+        ImageButton buttonPorteOuest = findViewById(R.id.buttonPorteOuest);
 
         buttonPorteNord.setOnClickListener((v)->{
             Intent ic = new Intent(EditRoomActivity.this, AddDoorActivity.class);
