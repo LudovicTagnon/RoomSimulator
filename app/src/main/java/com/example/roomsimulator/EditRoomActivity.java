@@ -47,24 +47,31 @@ public class EditRoomActivity extends AppCompatActivity {
         arrayList.get(roomIndex).setImageSud(findViewById(R.id.imageViewSud));
         arrayList.get(roomIndex).setImageOuest(findViewById(R.id.imageViewOuest));
 
-        if(arrayList.get(roomIndex).getImageNord() != null) {
-            arrayList.get(roomIndex).getImageNord().setImageBitmap(arrayList.get(roomIndex).getImageNordBitmap());
-        }
-        if(arrayList.get(roomIndex).getImageEst() != null) {
-            arrayList.get(roomIndex).getImageEst().setImageBitmap(arrayList.get(roomIndex).getImageEstBitmap());
-        }
-        if(arrayList.get(roomIndex).getImageSud() != null) {
-            arrayList.get(roomIndex).getImageSud().setImageBitmap(arrayList.get(roomIndex).getImageSudBitmap());
-        }
-        if(arrayList.get(roomIndex).getImageOuest() != null) {
-            arrayList.get(roomIndex).getImageOuest().setImageBitmap(arrayList.get(roomIndex).getImageOuestBitmap());
-        }
-
 
         Button buttonNord = findViewById(R.id.buttonAjouterPhotoN);
         Button buttonEst = findViewById(R.id.buttonAjouterPhotoE);
         Button buttonSud = findViewById(R.id.buttonAjouterPhotoS);
         Button buttonOuest = findViewById(R.id.buttonAjouterPhotoO);
+
+
+
+        if(arrayList.get(roomIndex).getImageNordBitmap() != null) {
+            arrayList.get(roomIndex).getImageNord().setImageBitmap(arrayList.get(roomIndex).getImageNordBitmap());
+            buttonNord.setTextColor(Color.TRANSPARENT);
+        }
+        if(arrayList.get(roomIndex).getImageEstBitmap() != null) {
+            arrayList.get(roomIndex).getImageEst().setImageBitmap(arrayList.get(roomIndex).getImageEstBitmap());
+            buttonEst.setTextColor(Color.TRANSPARENT);
+        }
+        if(arrayList.get(roomIndex).getImageSudBitmap() != null) {
+            arrayList.get(roomIndex).getImageSud().setImageBitmap(arrayList.get(roomIndex).getImageSudBitmap());
+            buttonSud.setTextColor(Color.TRANSPARENT);
+        }
+        if(arrayList.get(roomIndex).getImageOuestBitmap() != null) {
+            arrayList.get(roomIndex).getImageOuest().setImageBitmap(arrayList.get(roomIndex).getImageOuestBitmap());
+            buttonOuest.setTextColor(Color.TRANSPARENT);
+        }
+
 
         buttonNord.setOnClickListener((v)->{
             Intent ic = new Intent(EditRoomActivity.this, PhotoActivity.class);
@@ -72,30 +79,27 @@ public class EditRoomActivity extends AppCompatActivity {
             ic.putExtra("direction", "N");
             startActivity(ic);
             buttonNord.setTextColor(Color.TRANSPARENT);
-
         });
         buttonEst.setOnClickListener((v)->{
             Intent ic = new Intent(EditRoomActivity.this, PhotoActivity.class);
             ic.putExtra("roomIndex", Integer.toString(roomIndex));
             ic.putExtra("direction", "E");
             startActivity(ic);
-            buttonNord.setTextColor(Color.TRANSPARENT);
-
+            buttonEst.setTextColor(Color.TRANSPARENT);
         });
         buttonSud.setOnClickListener((v)->{
             Intent ic = new Intent(EditRoomActivity.this, PhotoActivity.class);
             ic.putExtra("roomIndex", Integer.toString(roomIndex));
             ic.putExtra("direction", "S");
             startActivity(ic);
-            buttonNord.setTextColor(Color.TRANSPARENT);
-
+            buttonSud.setTextColor(Color.TRANSPARENT);
         });
         buttonOuest.setOnClickListener((v)->{
             Intent ic = new Intent(EditRoomActivity.this, PhotoActivity.class);
             ic.putExtra("roomIndex", Integer.toString(roomIndex));
             ic.putExtra("direction", "O");
             startActivity(ic);
-            buttonNord.setTextColor(Color.TRANSPARENT);
+            buttonOuest.setTextColor(Color.TRANSPARENT);
         });
 
     }
