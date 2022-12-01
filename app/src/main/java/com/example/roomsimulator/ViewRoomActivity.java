@@ -18,21 +18,23 @@ public class ViewRoomActivity extends AppCompatActivity {
 
     private RoomModel currentRoom;
     private int roomIndex;
-
     private ImageView imageView;
-
     private Button buttonGauche;
     private Button buttonDroite;
 
-    private Button buttonPorteNord;
-    private Button buttonPorteEst;
-    private Button buttonPorteSud;
-    private Button buttonPorteOuest;
+    ArrayList<Button> buttonPorteNord = new ArrayList<>();
+    ArrayList<Button> buttonPorteEst = new ArrayList<>();
+    ArrayList<Button> buttonPorteSud = new ArrayList<>();
+    ArrayList<Button> buttonPorteOuest = new ArrayList<>();
     private String direction = new String();
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_view_room);
 
         this.direction = "N";
@@ -59,38 +61,56 @@ public class ViewRoomActivity extends AppCompatActivity {
             switch (direction) {
                 case "N":
                     if(arrayList.get(roomIndex).getMurOuest().getBitmap() != null) {
-                        buttonPorteNord.setClickable(false);
-                        buttonPorteNord.setBackgroundColor(Color.TRANSPARENT);
+                        for (Button b: buttonPorteNord) {
+                            b.setClickable(false); //TODO
+                            b.setBackgroundColor(Color.TRANSPARENT);
+                        }
+
                         setImageMurOuest();
-                        buttonPorteOuest.setClickable(true);
-                        buttonPorteOuest.setBackgroundColor(Color.YELLOW);
+                        for (Button b: buttonPorteOuest) {
+                            b.setClickable(true);
+                            b.setBackgroundColor(Color.YELLOW);
+                        }
+
                     }
                     break;
                 case "E":
                     if(arrayList.get(roomIndex).getMurNord().getBitmap() != null) {
-                        buttonPorteEst.setClickable(false);
-                        buttonPorteEst.setBackgroundColor(Color.TRANSPARENT);
+                        for (Button b: buttonPorteEst) {
+                            b.setClickable(false);
+                            b.setBackgroundColor(Color.TRANSPARENT);
+                        }
                         setImageMurNord();
-                        buttonPorteNord.setClickable(true);
-                        buttonPorteNord.setBackgroundColor(Color.YELLOW);
+                        for (Button b: buttonPorteNord) {
+                            b.setClickable(true);
+                            b.setBackgroundColor(Color.YELLOW);
+                        }
                     }
                     break;
                 case "S":
                     if(arrayList.get(roomIndex).getMurEst().getBitmap() != null) {
-                        buttonPorteSud.setClickable(false);
-                        buttonPorteSud.setBackgroundColor(Color.TRANSPARENT);
+                        for (Button b: buttonPorteSud) {
+                            b.setClickable(false);
+                            b.setBackgroundColor(Color.TRANSPARENT);
+                        }
                         setImageMurEst();
-                        buttonPorteEst.setClickable(true);
-                        buttonPorteEst.setBackgroundColor(Color.YELLOW);
+                        for (Button b: buttonPorteEst) {
+                            b.setClickable(true);
+                            b.setBackgroundColor(Color.YELLOW);
+                        }
                     }
                     break;
                 case "O":
                     if(arrayList.get(roomIndex).getMurSud().getBitmap() != null) {
-                        buttonPorteOuest.setClickable(false);
-                        buttonPorteOuest.setBackgroundColor(Color.TRANSPARENT);
+                        for (Button b: buttonPorteOuest) {
+                            b.setClickable(false);
+                            b.setBackgroundColor(Color.TRANSPARENT);
+                        }
                         setImageMurSud();
-                        buttonPorteSud.setClickable(true);
-                        buttonPorteSud.setBackgroundColor(Color.YELLOW);
+                        for (Button b: buttonPorteSud) {
+                            b.setClickable(true);
+                            b.setBackgroundColor(Color.YELLOW);
+                        }
                     }
                     break;
             }
@@ -101,38 +121,54 @@ public class ViewRoomActivity extends AppCompatActivity {
             switch (direction) {
                 case "N":
                     if(arrayList.get(roomIndex).getMurEst().getBitmap() != null) {
-                        buttonPorteNord.setClickable(false);
-                        buttonPorteNord.setBackgroundColor(Color.TRANSPARENT);
+                        for (Button b: buttonPorteNord) {
+                            b.setClickable(false);
+                            b.setBackgroundColor(Color.TRANSPARENT);
+                        }
                         setImageMurEst();
-                        buttonPorteEst.setClickable(true);
-                        buttonPorteEst.setBackgroundColor(Color.YELLOW);
+                        for (Button b: buttonPorteEst) {
+                            b.setClickable(true);
+                            b.setBackgroundColor(Color.YELLOW);
+                        }
                     }
                     break;
                 case "E":
                     if(arrayList.get(roomIndex).getMurSud().getBitmap() != null) {
-                        buttonPorteEst.setClickable(false);
-                        buttonPorteEst.setBackgroundColor(Color.TRANSPARENT);
+                        for (Button b: buttonPorteEst) {
+                            b.setClickable(false);
+                            b.setBackgroundColor(Color.TRANSPARENT);
+                        }
                         setImageMurSud();
-                        buttonPorteSud.setClickable(true);
-                        buttonPorteSud.setBackgroundColor(Color.YELLOW);
+                        for (Button b: buttonPorteSud) {
+                            b.setClickable(true);
+                            b.setBackgroundColor(Color.YELLOW);
+                        }
                     }
                     break;
                 case "S":
                     if(arrayList.get(roomIndex).getMurOuest().getBitmap() != null) {
-                        buttonPorteSud.setClickable(false);
-                        buttonPorteSud.setBackgroundColor(Color.TRANSPARENT);
+                        for (Button b: buttonPorteSud) {
+                            b.setClickable(false);
+                            b.setBackgroundColor(Color.TRANSPARENT);
+                        }
                         setImageMurOuest();
-                        buttonPorteOuest.setClickable(true);
-                        buttonPorteOuest.setBackgroundColor(Color.YELLOW);
+                        for (Button b: buttonPorteOuest) {
+                            b.setClickable(true);
+                            b.setBackgroundColor(Color.YELLOW);
+                        }
                     }
                     break;
                 case "O":
                     if(arrayList.get(roomIndex).getMurNord().getBitmap() != null) {
-                        buttonPorteOuest.setClickable(false);
-                        buttonPorteOuest.setBackgroundColor(Color.TRANSPARENT);
+                        for (Button b: buttonPorteOuest) {
+                            b.setClickable(false);
+                            b.setBackgroundColor(Color.TRANSPARENT);
+                        }
                         setImageMurNord();
-                        buttonPorteNord.setClickable(true);
-                        buttonPorteNord.setBackgroundColor(Color.YELLOW);
+                        for (Button b: buttonPorteNord) {
+                            b.setClickable(true);
+                            b.setBackgroundColor(Color.YELLOW);
+                        }
                     }
                     break;
             }
@@ -165,69 +201,131 @@ public class ViewRoomActivity extends AppCompatActivity {
 
     public void setupPortes(){
 
-        buttonPorteNord = new Button(this);
-        buttonPorteEst = new Button(this);
-        buttonPorteSud = new Button(this);
-        buttonPorteOuest = new Button(this);
 
         switch (direction) {
             case "N":
-                if(arrayList.get(roomIndex).getMurNord().getPortes().size() != 0) {
-                    ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    params.width = arrayList.get(roomIndex).getMurNord().getPortes().get(0).width();
-                    params.height = arrayList.get(roomIndex).getMurNord().getPortes().get(0).height();
-                    buttonPorteNord.setLayoutParams(params);
-                    buttonPorteNord.setX(arrayList.get(roomIndex).getMurNord().getPortes().get(0).left);
-                    buttonPorteNord.setY(arrayList.get(roomIndex).getMurNord().getPortes().get(0).top);
-                    buttonPorteNord.setBackgroundColor(Color.YELLOW);
-                    Log.i("TEST", "X=" + buttonPorteNord.getX() + "Y=" + buttonPorteNord.getY() + "W=" + buttonPorteNord.getWidth() + "H=" + buttonPorteNord.getHeight());
-                    ViewRoomActivity.this.addContentView(buttonPorteNord, buttonPorteNord.getLayoutParams());
+                if(arrayList.get(roomIndex).getMurNord().getPortes().size() != 0 ) { // Si il existe des portes dans ce mur
+                    //Crée un bouton avec la position du rectangle de la porte
+                    int i=0;
+                    for (DoorModel door : arrayList.get(roomIndex).getMurNord().getPortes()) {
+                        if(!door.isAddedToView()) { // Si le bouton de la porte n'est pas encore ajouté
+                            buttonPorteNord.add(new Button(this));
+                            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                            params.width = door.getPosition().width();
+                            params.height = door.getPosition().height();
+                            buttonPorteNord.get(i).setLayoutParams(params);
+                            buttonPorteNord.get(i).setX(door.getPosition().left);
+                            buttonPorteNord.get(i).setY(door.getPosition().top);
+                            buttonPorteNord.get(i).setBackgroundColor(Color.YELLOW);
+                            Log.i("TEST", "X=" + buttonPorteNord.get(i).getX() + "Y=" + buttonPorteNord.get(i).getY() + "W=" + buttonPorteNord.get(i).getWidth() + "H=" + buttonPorteNord.get(i).getHeight());
+                            ViewRoomActivity.this.addContentView(buttonPorteNord.get(i), buttonPorteNord.get(i).getLayoutParams());
+                            i++;
+                            door.setAddedToView(true);
+                        }
+                    }
                 }
                 break;
             case "E":
-                if(arrayList.get(roomIndex).getMurEst().getPortes().size() != 0) {
-                    ViewGroup.LayoutParams paramsE = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    paramsE.width = arrayList.get(roomIndex).getMurEst().getPortes().get(0).width();
-                    paramsE.height = arrayList.get(roomIndex).getMurEst().getPortes().get(0).height();
-                    buttonPorteEst.setLayoutParams(paramsE);
-                    buttonPorteEst.setX(arrayList.get(roomIndex).getMurEst().getPortes().get(0).left);
-                    buttonPorteEst.setY(arrayList.get(roomIndex).getMurEst().getPortes().get(0).top);
-                    buttonPorteEst.setBackgroundColor(Color.YELLOW);
-                    Log.i("TEST", "X=" + buttonPorteEst.getX() + "Y=" + buttonPorteEst.getY() + "W=" + buttonPorteEst.getWidth() + "H=" + buttonPorteEst.getHeight());
-                    ViewRoomActivity.this.addContentView(buttonPorteEst, buttonPorteEst.getLayoutParams());
+                if(arrayList.get(roomIndex).getMurNord().getPortes().size() != 0) { // Si il existe des portes dans ce mur
+                    //Crée un bouton avec la position du rectangle de la porte
+                    int i=0;
+                    for (DoorModel door : arrayList.get(roomIndex).getMurEst().getPortes()) {
+                        if(!door.isAddedToView()) { // Si le bouton de la porte n'est pas encore ajouté
+                            buttonPorteEst.add(new Button(this));
+                            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                            params.width = door.getPosition().width();
+                            params.height = door.getPosition().height();
+                            buttonPorteEst.get(i).setLayoutParams(params);
+                            buttonPorteEst.get(i).setX(door.getPosition().left);
+                            buttonPorteEst.get(i).setY(door.getPosition().top);
+                            buttonPorteEst.get(i).setBackgroundColor(Color.YELLOW);
+                            Log.i("TEST", "X=" + buttonPorteEst.get(i).getX() + "Y=" + buttonPorteEst.get(i).getY() + "W=" + buttonPorteEst.get(i).getWidth() + "H=" + buttonPorteEst.get(i).getHeight());
+                            ViewRoomActivity.this.addContentView(buttonPorteEst.get(i), buttonPorteEst.get(i).getLayoutParams());
+                            i++;
+                            door.setAddedToView(true);
+                        }
+                    }
                 }
                 break;
             case "S":
-                if(arrayList.get(roomIndex).getMurEst().getPortes().size() != 0) {
-                    ViewGroup.LayoutParams paramsS = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    paramsS.width = arrayList.get(roomIndex).getMurSud().getPortes().get(0).width();
-                    paramsS.height = arrayList.get(roomIndex).getMurSud().getPortes().get(0).height();
-                    buttonPorteSud.setLayoutParams(paramsS);
-                    buttonPorteSud.setX(arrayList.get(roomIndex).getMurSud().getPortes().get(0).left);
-                    buttonPorteSud.setY(arrayList.get(roomIndex).getMurSud().getPortes().get(0).top);
-                    buttonPorteSud.setBackgroundColor(Color.YELLOW);
-                    Log.i("TEST", "X=" + buttonPorteSud.getX() + "Y=" + buttonPorteSud.getY() + "W=" + buttonPorteSud.getWidth() + "H=" + buttonPorteSud.getHeight());
-                    ViewRoomActivity.this.addContentView(buttonPorteSud, buttonPorteSud.getLayoutParams());
+                if(arrayList.get(roomIndex).getMurNord().getPortes().size() != 0) { // Si il existe des portes dans ce mur
+                    //Crée un bouton avec la position du rectangle de la porte
+                    int i = 0;
+                    for (DoorModel door : arrayList.get(roomIndex).getMurSud().getPortes()) {
+                        if(!door.isAddedToView()) { // Si le bouton de la porte n'est pas encore ajouté
+                            buttonPorteSud.add(new Button(this));
+                            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                            params.width = door.getPosition().width();
+                            params.height = door.getPosition().height();
+                            buttonPorteSud.get(i).setLayoutParams(params);
+                            buttonPorteSud.get(i).setX(door.getPosition().left);
+                            buttonPorteSud.get(i).setY(door.getPosition().top);
+                            buttonPorteSud.get(i).setBackgroundColor(Color.YELLOW);
+                            Log.i("TEST", "X=" + buttonPorteSud.get(i).getX() + "Y=" + buttonPorteSud.get(i).getY() + "W=" + buttonPorteSud.get(i).getWidth() + "H=" + buttonPorteNord.get(i).getHeight());
+                            ViewRoomActivity.this.addContentView(buttonPorteSud.get(i), buttonPorteSud.get(i).getLayoutParams());
+                            i++;
+                            door.setAddedToView(true);
+                        }
+                    }
                 }
                 break;
             case "O":
-                if(arrayList.get(roomIndex).getMurOuest().getPortes().size() != 0) {
-                    ViewGroup.LayoutParams paramsO = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    paramsO.width = arrayList.get(roomIndex).getMurOuest().getPortes().get(0).width();
-                    paramsO.height = arrayList.get(roomIndex).getMurOuest().getPortes().get(0).height();
-                    buttonPorteOuest.setLayoutParams(paramsO);
-                    buttonPorteOuest.setX(arrayList.get(roomIndex).getMurOuest().getPortes().get(0).left);
-                    buttonPorteOuest.setY(arrayList.get(roomIndex).getMurOuest().getPortes().get(0).top);
-                    buttonPorteOuest.setBackgroundColor(Color.YELLOW);
-                    Log.i("TEST", "X=" + buttonPorteOuest.getX() + "Y=" + buttonPorteOuest.getY() + "W=" + buttonPorteOuest.getWidth() + "H=" + buttonPorteOuest.getHeight());
-                    ViewRoomActivity.this.addContentView(buttonPorteOuest, buttonPorteOuest.getLayoutParams());
+                if(arrayList.get(roomIndex).getMurNord().getPortes().size() != 0) { // Si il existe des portes dans ce mur
+                    //Crée un bouton avec la position du rectangle de la porte
+                    int i = 0;
+                    for (DoorModel door : arrayList.get(roomIndex).getMurOuest().getPortes()) {
+                        if(!door.isAddedToView()) { // Si le bouton de la porte n'est pas encore ajouté
+                            buttonPorteOuest.add(new Button(this));
+                            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                            params.width = door.getPosition().width();
+                            params.height = door.getPosition().height();
+                            buttonPorteOuest.get(i).setLayoutParams(params);
+                            buttonPorteOuest.get(i).setX(door.getPosition().left);
+                            buttonPorteOuest.get(i).setY(door.getPosition().top);
+                            buttonPorteOuest.get(i).setBackgroundColor(Color.YELLOW);
+                            Log.i("TEST", "X=" + buttonPorteOuest.get(i).getX() + "Y=" + buttonPorteOuest.get(i).getY() + "W=" + buttonPorteOuest.get(i).getWidth() + "H=" + buttonPorteOuest.get(i).getHeight());
+                            ViewRoomActivity.this.addContentView(buttonPorteOuest.get(i), buttonPorteOuest.get(i).getLayoutParams());
+                            i++;
+                            door.setAddedToView(true);
+                        }
+                    }
                 }
                 break;
         }
 
-        buttonPorteNord.setOnClickListener((v)->{
-            Toast.makeText(ViewRoomActivity.this, "Porte", Toast.LENGTH_SHORT).show();
-        });
+        ListenerPortes(buttonPorteNord);
+        ListenerPortes(buttonPorteEst);
+        ListenerPortes(buttonPorteSud);
+        ListenerPortes(buttonPorteOuest);
+
+
     }
+
+    private void ListenerPortes(ArrayList<Button> button) {
+        for (Button b: button) {
+            b.setOnClickListener((v)->{
+                Toast.makeText(ViewRoomActivity.this, "Porte", Toast.LENGTH_SHORT).show();
+            });
+        }
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        for (DoorModel d: arrayList.get(roomIndex).getMurNord().getPortes()) {
+            d.setAddedToView(false);
+        }
+        for (DoorModel d: arrayList.get(roomIndex).getMurEst().getPortes()) {
+            d.setAddedToView(false);
+        }
+        for (DoorModel d: arrayList.get(roomIndex).getMurSud().getPortes()) {
+            d.setAddedToView(false);
+        }
+        for (DoorModel d: arrayList.get(roomIndex).getMurOuest().getPortes()) {
+            d.setAddedToView(false);
+        }
+        this.finish();
+    }
+
 
 }

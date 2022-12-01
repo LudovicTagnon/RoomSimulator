@@ -68,16 +68,16 @@ public class AddDoorActivity extends AppCompatActivity {
             if(rect != null) {
                 switch (direction) {
                     case "N":
-                        arrayList.get(roomIndex).getMurNord().getPortes().add(rect);
+                        arrayList.get(roomIndex).getMurNord().getPortes().add(new DoorModel(rect));
                         break;
                     case "E":
-                        arrayList.get(roomIndex).getMurEst().getPortes().add(rect);
+                        arrayList.get(roomIndex).getMurEst().getPortes().add(new DoorModel(rect));
                         break;
                     case "S":
-                        arrayList.get(roomIndex).getMurSud().getPortes().add(rect);
+                        arrayList.get(roomIndex).getMurSud().getPortes().add(new DoorModel(rect));
                         break;
                     case "O":
-                        arrayList.get(roomIndex).getMurOuest().getPortes().add(rect);
+                        arrayList.get(roomIndex).getMurOuest().getPortes().add(new DoorModel(rect));
                         break;
                 }
             }

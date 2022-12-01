@@ -8,8 +8,8 @@
         tools:context=".MainActivity">
     <Button
             android:text="Mode Creation"
-            android:layout_width="176dp"
-            android:layout_height="48dp"
+            android:layout_width="174dp"
+            android:layout_height="79dp"
             android:id="@+id/buttonCreation"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -17,8 +17,8 @@
             app:layout_constraintBottom_toTopOf="@+id/buttonNavigation" app:layout_constraintVertical_bias="0.737"/>
     <Button
             android:text="Mode Navigation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="180dp"
+            android:layout_height="74dp"
             android:id="@+id/buttonNavigation"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

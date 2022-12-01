@@ -11,7 +11,7 @@ public class WallModel {
     private ImageView image;
 
     private Bitmap bitmap;
-    private ArrayList<Rect> portes = new ArrayList<>();
+    private ArrayList<DoorModel> portes = new ArrayList<>();
 
     public WallModel(String direction) {
         this.direction = direction;
@@ -30,7 +30,7 @@ public class WallModel {
         return bitmap;
     }
 
-    public ArrayList<Rect> getPortes() {
+    public ArrayList<DoorModel> getPortes() {
         return portes;
     }
 
@@ -46,7 +46,7 @@ public class WallModel {
         this.bitmap = bitmap;
     }
 
-    public void setPortes(ArrayList<Rect> portes) {
+    public void setPortes(ArrayList<DoorModel> portes) {
         this.portes = portes;
     }
 }
