@@ -47,14 +47,14 @@ public class EditRoomActivity extends AppCompatActivity {
         arrayList.get(roomIndex).setImageSud(findViewById(R.id.imageViewSud));
         arrayList.get(roomIndex).setImageOuest(findViewById(R.id.imageViewOuest));
 
-
+        //Lie les boutons xml aux boutons du code
         Button buttonNord = findViewById(R.id.buttonAjouterPhotoN);
         Button buttonEst = findViewById(R.id.buttonAjouterPhotoE);
         Button buttonSud = findViewById(R.id.buttonAjouterPhotoS);
         Button buttonOuest = findViewById(R.id.buttonAjouterPhotoO);
 
 
-
+        //Affiche les images de chaque mur dans leur cadre respectif si elles existent
         if(arrayList.get(roomIndex).getImageNordBitmap() != null) {
             arrayList.get(roomIndex).getImageNord().setImageBitmap(arrayList.get(roomIndex).getImageNordBitmap());
             buttonNord.setTextColor(Color.TRANSPARENT);
@@ -100,6 +100,36 @@ public class EditRoomActivity extends AppCompatActivity {
             ic.putExtra("direction", "O");
             startActivity(ic);
             buttonOuest.setTextColor(Color.TRANSPARENT);
+        });
+
+        Button buttonPorteNord = findViewById(R.id.buttonPorteNord);
+        Button buttonPorteEst = findViewById(R.id.buttonPorteEst);
+        Button buttonPorteSud = findViewById(R.id.buttonPorteSud);
+        Button buttonPorteOuest = findViewById(R.id.buttonPorteOuest);
+
+        buttonPorteNord.setOnClickListener((v)->{
+            Intent ic = new Intent(EditRoomActivity.this, AddDoorActivity.class);
+            ic.putExtra("roomIndex", Integer.toString(roomIndex));
+            ic.putExtra("direction", "N");
+            startActivity(ic);
+        });
+        buttonPorteEst.setOnClickListener((v)->{
+            Intent ic = new Intent(EditRoomActivity.this, AddDoorActivity.class);
+            ic.putExtra("roomIndex", Integer.toString(roomIndex));
+            ic.putExtra("direction", "E");
+            startActivity(ic);
+        });
+        buttonPorteSud.setOnClickListener((v)->{
+            Intent ic = new Intent(EditRoomActivity.this, AddDoorActivity.class);
+            ic.putExtra("roomIndex", Integer.toString(roomIndex));
+            ic.putExtra("direction", "S");
+            startActivity(ic);
+        });
+        buttonPorteOuest.setOnClickListener((v)->{
+            Intent ic = new Intent(EditRoomActivity.this, AddDoorActivity.class);
+            ic.putExtra("roomIndex", Integer.toString(roomIndex));
+            ic.putExtra("direction", "O");
+            startActivity(ic);
         });
 
     }

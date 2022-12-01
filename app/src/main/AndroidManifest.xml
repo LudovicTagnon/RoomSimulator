@@ -23,6 +23,9 @@
             android:theme="@style/Theme.RoomSimulator"
             tools:targetApi="31">
         <activity
+                android:name=".AddDoorActivity"
+                android:exported="false"/>
+        <activity
                 android:name=".ViewRoomActivity"
                 android:exported="false"/>
         <activity
