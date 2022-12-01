@@ -13,12 +13,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buttonConfirmerPorte"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewAddDoor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="44dp"
-            app:layout_constraintHorizontal_bias="0.498"
-    />
+            app:layout_constraintTop_toBottomOf="@+id/recycler_view_rooms"
+            app:layout_constraintBottom_toBottomOf="parent"/>
     <ImageView
             android:layout_width="400dp"
             android:layout_height="400dp"
@@ -34,6 +32,17 @@
             android:id="@+id/surfaceView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageViewAddDoor"/>
+            app:layout_constraintTop_toTopOf="@+id/imageViewAddDoor"
+    />
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="332dp"
+            android:layout_height="212dp"
+            android:id="@+id/recycler_view_rooms"
+            tools:listitem="@layout/item_room"
+            tools:ignore="MissingConsraints"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewAddDoor" android:layout_marginTop="32dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

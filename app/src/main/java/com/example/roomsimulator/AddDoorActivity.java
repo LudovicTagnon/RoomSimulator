@@ -4,14 +4,18 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.*;
 import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.*;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -26,6 +30,18 @@ public class AddDoorActivity extends AppCompatActivity {
     protected SurfaceView surfaceView;
 
     private Button buttonConfirmer;
+
+
+    //======================================================
+
+
+    private RecyclerView recyclerView;
+
+    private MainAdapter adapter;
+
+    private RoomModel selectedRoom;
+
+
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -65,21 +81,27 @@ public class AddDoorActivity extends AppCompatActivity {
         buttonConfirmer = findViewById(R.id.buttonConfirmerPorte);
 
         buttonConfirmer.setOnClickListener((b)->{
-            if(rect != null) {
+
+            //Lier à la prochaine pièce
+
+
+            if(rect != null && selectedRoom != null) {
+                DoorModel d = new DoorModel(rect, selectedRoom);
                 switch (direction) {
                     case "N":
-                        arrayList.get(roomIndex).getMurNord().getPortes().add(new DoorModel(rect));
+                        arrayList.get(roomIndex).getMurNord().getPortes().add(d);
                         break;
                     case "E":
-                        arrayList.get(roomIndex).getMurEst().getPortes().add(new DoorModel(rect));
+                        arrayList.get(roomIndex).getMurEst().getPortes().add(d);
                         break;
                     case "S":
-                        arrayList.get(roomIndex).getMurSud().getPortes().add(new DoorModel(rect));
+                        arrayList.get(roomIndex).getMurSud().getPortes().add(d);
                         break;
                     case "O":
-                        arrayList.get(roomIndex).getMurOuest().getPortes().add(new DoorModel(rect));
+                        arrayList.get(roomIndex).getMurOuest().getPortes().add(d);
                         break;
                 }
+                Toast.makeText(this, "Porte ajoutée!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -105,6 +127,27 @@ public class AddDoorActivity extends AppCompatActivity {
                     }
                 }
         );
+
+        //============================================================================================
+
+        recyclerView = findViewById(R.id.recycler_view_rooms);
+        getRoomList();
+
+
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                for (int i = 0; i < arrayList.size(); i++) {
+                    recyclerView.getChildAt(i).setBackgroundColor(Color.WHITE);
+                }
+                selectedRoom = arrayList.get(position);
+                recyclerView.getChildAt(position).setBackgroundColor(Color.YELLOW);
+            }
+            @Override
+            public void onLongItemClick(View view, int position) {}
+        }));
+
+
     }
 
     public void setNord(){
@@ -135,6 +178,10 @@ public class AddDoorActivity extends AppCompatActivity {
         }
     }
 
-
+    private void getRoomList() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new MainAdapter(this, arrayList);
+        recyclerView.setAdapter(adapter);
+    }
 
 }

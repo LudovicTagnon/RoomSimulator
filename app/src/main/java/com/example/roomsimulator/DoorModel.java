@@ -16,6 +16,11 @@ public class DoorModel {
         this.position = position;
     }
 
+    public DoorModel(Rect position, RoomModel nextRoom) {
+        this.position = position;
+        this.nextRoom = nextRoom;
+    }
+
 
     public Rect getPosition() {
         return position;

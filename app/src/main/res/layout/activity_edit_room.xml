@@ -156,5 +156,14 @@
             android:backgroundTint="@android:color/transparent"
             android:textColor="#000000"
     />
+    <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/compass"
+            android:id="@+id/imageViewCompass"
+            app:layout_constraintTop_toBottomOf="@+id/buttonAjouterPhotoN"
+            app:layout_constraintBottom_toTopOf="@+id/imageViewSud"
+            app:layout_constraintStart_toEndOf="@+id/buttonAjouterPhotoO"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewEst"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

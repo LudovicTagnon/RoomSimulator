@@ -179,6 +179,11 @@ public class ViewRoomActivity extends AppCompatActivity {
 
     }
 
+
+    public void changeImage(String direction){
+
+    }
+
     public void setImageMurNord(){
             imageView.setImageBitmap(arrayList.get(roomIndex).getMurNord().getBitmap());
             this.direction = "N";
@@ -305,6 +310,8 @@ public class ViewRoomActivity extends AppCompatActivity {
         for (Button b: button) {
             b.setOnClickListener((v)->{
                 Toast.makeText(ViewRoomActivity.this, "Porte", Toast.LENGTH_SHORT).show();
+
+
             });
         }
     }
