@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class WallModel {
     private String direction;
     private ImageView image;
-
     private Bitmap bitmap;
     private ArrayList<DoorModel> portes = new ArrayList<>();
 

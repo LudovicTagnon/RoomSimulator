@@ -20,4 +20,8 @@ public class RoomManager {
     public ArrayList<RoomModel> getArrayListRooms() {
         return arrayListRooms;
     }
+
+    public void setArrayListRooms(ArrayList<RoomModel> arrayListRooms) {
+        this.arrayListRooms = arrayListRooms;
+    }
 }

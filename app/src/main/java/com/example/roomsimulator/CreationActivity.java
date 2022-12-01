@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -69,5 +70,16 @@ public class CreationActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        Enregistrement enregistrement = new Enregistrement();
+        try {
+            enregistrement.save();
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+        this.finish();
+    }
 
 }
