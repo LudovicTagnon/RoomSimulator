@@ -18,15 +18,10 @@ public class AddDoorActivity extends AppCompatActivity {
 
     private int roomIndex;
     private String direction;
-
     private ImageView imageView;
-
     private ArrayList<RoomModel> arrayList;
-
     protected Rect rect;
-
     protected CanvasView canvasView;
-
     protected SurfaceView surfaceView;
 
     @SuppressLint("ClickableViewAccessibility")
@@ -43,6 +38,7 @@ public class AddDoorActivity extends AppCompatActivity {
             direction = extras.getString("direction");
         }
 
+        //Associe l'imageView xml avec celle du code
         imageView = findViewById(R.id.imageViewAddDoor);
 
         //Récupère les rooms
@@ -71,7 +67,7 @@ public class AddDoorActivity extends AppCompatActivity {
                     public boolean onTouch(View v, MotionEvent event) {
                         if (event.getPointerCount() == 2) {
 
-                            rect = new Rect((int) event.getX(0), (int) event.getY(0)-100, (int) event.getX(1), (int) event.getY(1)-100);
+                            rect = new Rect((int) event.getX(0), (int) event.getY(0), (int) event.getX(1), (int) event.getY(1));
                             rect.sort();
 
                             canvasView = new CanvasView(AddDoorActivity.this, surfaceView, rect);
@@ -90,11 +86,11 @@ public class AddDoorActivity extends AppCompatActivity {
                             z.buildDrawingCache(true);
 
                             Bitmap bm0 = Bitmap.createBitmap(z.getDrawingCache());
-                            Bitmap bm = Bitmap.createBitmap(bm0, (int) rect.left+50, (int) imageView.getY()+ 350 +rect.top, rect.width(), rect.height());
+                            Bitmap bm = Bitmap.createBitmap(bm0, (int) (rect.left ), (int) (rect.top + imageView.getY() + 250), rect.width(), rect.height());
 
 
-                            ImageView imageView2 = new ImageView(AddDoorActivity.this);
-                            imageView2.setImageBitmap(bm);
+                            ImageView imageViewSelection = new ImageView(AddDoorActivity.this);
+                            imageViewSelection.setImageBitmap(bm);
 
                             Dialog dialog = new Dialog(AddDoorActivity.this);
                             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -107,7 +103,7 @@ public class AddDoorActivity extends AppCompatActivity {
                                 }
                             });
 
-                            dialog.addContentView(imageView2, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                            dialog.addContentView(imageViewSelection, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                             dialog.show();
 
                         }
@@ -121,8 +117,8 @@ public class AddDoorActivity extends AppCompatActivity {
     public void setNord(){
         if(arrayList.get(roomIndex).getImageNordBitmap() != null){
             imageView.setImageBitmap(arrayList.get(roomIndex).getImageNordBitmap());
-            imageView.getLayoutParams().height = 600;
-            imageView.getLayoutParams().width = 1000;
+            imageView.getLayoutParams().height = 1080;
+            imageView.getLayoutParams().width = 1080;
             this.direction = "N";
         }
     }
@@ -130,8 +126,8 @@ public class AddDoorActivity extends AppCompatActivity {
     public void setEst(){
         if(arrayList.get(roomIndex).getImageEstBitmap() != null){
             imageView.setImageBitmap(arrayList.get(roomIndex).getImageEstBitmap());
-            imageView.getLayoutParams().height = 600;
-            imageView.getLayoutParams().width = 1000;
+            imageView.getLayoutParams().height = 1080;
+            imageView.getLayoutParams().width = 1080;
             this.direction = "E";
         }
     }
@@ -139,8 +135,8 @@ public class AddDoorActivity extends AppCompatActivity {
     public void setSud(){
         if(arrayList.get(roomIndex).getImageSudBitmap() != null){
             imageView.setImageBitmap(arrayList.get(roomIndex).getImageSudBitmap());
-            imageView.getLayoutParams().height = 600;
-            imageView.getLayoutParams().width = 1000;
+            imageView.getLayoutParams().height = 1080;
+            imageView.getLayoutParams().width = 1080;
             this.direction = "S";
         }
     }
@@ -148,8 +144,8 @@ public class AddDoorActivity extends AppCompatActivity {
     public void setOuest(){
         if(arrayList.get(roomIndex).getImageOuestBitmap() != null){
             imageView.setImageBitmap(arrayList.get(roomIndex).getImageOuestBitmap());
-            imageView.getLayoutParams().height = 600;
-            imageView.getLayoutParams().width = 1000;
+            imageView.getLayoutParams().height = 1080;
+            imageView.getLayoutParams().width = 1080;
             this.direction = "O";
         }
     }

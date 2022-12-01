@@ -22,8 +22,8 @@
             android:textSize="20dp"
     />
     <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="1080px"
+            android:layout_height="1080px"
             app:srcCompat="@drawable/room"
             android:id="@+id/imageViewAddDoor"
             app:layout_constraintTop_toTopOf="parent"
@@ -42,8 +42,8 @@
             app:layout_constraintHorizontal_bias="0.498"
     />
     <SurfaceView
-            android:layout_width="415dp"
-            android:layout_height="457dp"
+            android:layout_width="1080px"
+            android:layout_height="1080px"
             android:id="@+id/surfaceView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
