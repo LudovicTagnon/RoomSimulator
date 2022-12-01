@@ -5,7 +5,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".AddDoorActivity">
+        tools:context=".AddDoorActivity"
+>
 
     <TextView
             android:text="AJOUT PORTE"
@@ -19,7 +20,6 @@
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="20dp"
-
     />
     <ImageView
             android:layout_width="wrap_content"
@@ -28,7 +28,8 @@
             android:id="@+id/imageViewAddDoor"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="136dp" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+    />
     <Button
             android:text="CONFIRMER"
             android:layout_width="wrap_content"
@@ -38,5 +39,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="44dp"
-            app:layout_constraintHorizontal_bias="0.498"/>
+            app:layout_constraintHorizontal_bias="0.498"
+    />
+    <SurfaceView
+            android:layout_width="415dp"
+            android:layout_height="457dp"
+            android:id="@+id/surfaceView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="136dp"
+    />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
