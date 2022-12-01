@@ -1,5 +1,6 @@
 package com.example.roomsimulator;
 
+import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -7,11 +8,15 @@ import java.util.ArrayList;
 public class RoomModel {
     private String name;
 
-    private ImageView imageNord;
-    private ImageView imageEst;
-    private ImageView imageSud;
-    private ImageView imageOuest;
+    private ImageView imageNord = null;
+    private ImageView imageEst = null;
+    private ImageView imageSud = null;
+    private ImageView imageOuest = null;
 
+    private Bitmap imageNordBitmap;
+    private Bitmap imageEstBitmap;
+    private Bitmap imageSudBitmap;
+    private Bitmap imageOuestBitmap;
 
     public RoomModel(String name) {
         this.name = name;
@@ -56,5 +61,37 @@ public class RoomModel {
 
     public void setImageOuest(ImageView imageOuest) {
         this.imageOuest = imageOuest;
+    }
+
+    public Bitmap getImageNordBitmap() {
+        return imageNordBitmap;
+    }
+
+    public Bitmap getImageEstBitmap() {
+        return imageEstBitmap;
+    }
+
+    public Bitmap getImageSudBitmap() {
+        return imageSudBitmap;
+    }
+
+    public Bitmap getImageOuestBitmap() {
+        return imageOuestBitmap;
+    }
+
+    public void setImageNordBitmap(Bitmap imageNordBitmap) {
+        this.imageNordBitmap = imageNordBitmap;
+    }
+
+    public void setImageEstBitmap(Bitmap imageEstBitmap) {
+        this.imageEstBitmap = imageEstBitmap;
+    }
+
+    public void setImageSudBitmap(Bitmap imageSudBitmap) {
+        this.imageSudBitmap = imageSudBitmap;
+    }
+
+    public void setImageOuestBitmap(Bitmap imageOuestBitmap) {
+        this.imageOuestBitmap = imageOuestBitmap;
     }
 }

@@ -50,12 +50,16 @@ public class PhotoActivity extends AppCompatActivity {
 
                 if(direction.equals("N")){
                     RoomManager.getInstance().getArrayListRooms().get(roomIndex).getImageNord().setImageBitmap(imageBitmap);
+                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).setImageNordBitmap(imageBitmap);
                 }else if(direction.equals("E")){
                     RoomManager.getInstance().getArrayListRooms().get(roomIndex).getImageEst().setImageBitmap(imageBitmap);
+                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).setImageEstBitmap(imageBitmap);
                 }else if(direction.equals("S")){
                     RoomManager.getInstance().getArrayListRooms().get(roomIndex).getImageSud().setImageBitmap(imageBitmap);
+                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).setImageSudBitmap(imageBitmap);
                 }else if(direction.equals("O")){
                     RoomManager.getInstance().getArrayListRooms().get(roomIndex).getImageOuest().setImageBitmap(imageBitmap);
+                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).setImageOuestBitmap(imageBitmap);
                 }
 
                 fos.flush();

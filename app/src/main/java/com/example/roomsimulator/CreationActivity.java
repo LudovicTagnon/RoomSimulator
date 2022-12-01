@@ -31,10 +31,10 @@ public class CreationActivity extends AppCompatActivity {
         //Récupère les rooms
         arrayList = RoomManager.getInstance().getArrayListRooms();
 
-
         inputText = findViewById(R.id.textNouvellePiece);
         recyclerView = findViewById(R.id.recycler_view_rooms);
-
+        getRoomList();
+        
         buttonNouvellePiece = findViewById(R.id.buttonNouvellePiece);
 
         buttonNouvellePiece.setOnClickListener((v)->{

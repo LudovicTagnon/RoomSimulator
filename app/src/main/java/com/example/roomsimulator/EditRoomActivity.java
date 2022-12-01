@@ -1,9 +1,11 @@
 package com.example.roomsimulator;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -16,6 +18,13 @@ public class EditRoomActivity extends AppCompatActivity {
     private RoomModel currentRoom;
     private int roomIndex;
 
+    private ImageView imageNord;
+    private ImageView imageEst;
+    private ImageView imageSud;
+    private ImageView imageOuest;
+
+
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -32,10 +41,25 @@ public class EditRoomActivity extends AppCompatActivity {
         //Récupère les rooms
         arrayList = RoomManager.getInstance().getArrayListRooms();
 
+        //Lie l'imageview xml à la variable imageview du room manager
         arrayList.get(roomIndex).setImageNord(findViewById(R.id.imageViewNord));
         arrayList.get(roomIndex).setImageEst(findViewById(R.id.imageViewEst));
         arrayList.get(roomIndex).setImageSud(findViewById(R.id.imageViewSud));
         arrayList.get(roomIndex).setImageOuest(findViewById(R.id.imageViewOuest));
+
+        if(arrayList.get(roomIndex).getImageNord() != null) {
+            arrayList.get(roomIndex).getImageNord().setImageBitmap(arrayList.get(roomIndex).getImageNordBitmap());
+        }
+        if(arrayList.get(roomIndex).getImageEst() != null) {
+            arrayList.get(roomIndex).getImageEst().setImageBitmap(arrayList.get(roomIndex).getImageEstBitmap());
+        }
+        if(arrayList.get(roomIndex).getImageSud() != null) {
+            arrayList.get(roomIndex).getImageSud().setImageBitmap(arrayList.get(roomIndex).getImageSudBitmap());
+        }
+        if(arrayList.get(roomIndex).getImageOuest() != null) {
+            arrayList.get(roomIndex).getImageOuest().setImageBitmap(arrayList.get(roomIndex).getImageOuestBitmap());
+        }
+
 
         Button buttonNord = findViewById(R.id.buttonAjouterPhotoN);
         Button buttonEst = findViewById(R.id.buttonAjouterPhotoE);
