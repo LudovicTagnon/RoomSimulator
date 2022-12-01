@@ -24,8 +24,10 @@ public class ViewRoomActivity extends AppCompatActivity {
     private Button buttonGauche;
     private Button buttonDroite;
 
-    private Button buttonPorte;
-
+    private Button buttonPorteNord;
+    private Button buttonPorteEst;
+    private Button buttonPorteSud;
+    private Button buttonPorteOuest;
     private String direction = new String();
 
     @Override
@@ -45,112 +47,187 @@ public class ViewRoomActivity extends AppCompatActivity {
         //Récupère les rooms
         arrayList = RoomManager.getInstance().getArrayListRooms();
 
-        //Lie l'imageview xml à la variable imageview du room manager
+        //Lie les objets xml aux variables de l'activité
         imageView = findViewById(R.id.imageViewCourante);
-
-        this.setNord();
-
         buttonGauche = findViewById(R.id.buttonLeft);
         buttonDroite = findViewById(R.id.buttonRight);
+
+        //Image par défaut
+        this.setImageMurNord();
 
         buttonGauche.setOnClickListener((v)->{
             switch (direction) {
                 case "N":
-                    setOuest();
+                    if(arrayList.get(roomIndex).getMurOuest().getBitmap() != null) {
+                        buttonPorteNord.setClickable(false);
+                        buttonPorteNord.setBackgroundColor(Color.TRANSPARENT);
+                        setImageMurOuest();
+                        buttonPorteOuest.setClickable(true);
+                        buttonPorteOuest.setBackgroundColor(Color.YELLOW);
+                    }
                     break;
                 case "E":
-                    setNord();
+                    if(arrayList.get(roomIndex).getMurNord().getBitmap() != null) {
+                        buttonPorteEst.setClickable(false);
+                        buttonPorteEst.setBackgroundColor(Color.TRANSPARENT);
+                        setImageMurNord();
+                        buttonPorteNord.setClickable(true);
+                        buttonPorteNord.setBackgroundColor(Color.YELLOW);
+                    }
                     break;
                 case "S":
-                    setEst();
+                    if(arrayList.get(roomIndex).getMurEst().getBitmap() != null) {
+                        buttonPorteSud.setClickable(false);
+                        buttonPorteSud.setBackgroundColor(Color.TRANSPARENT);
+                        setImageMurEst();
+                        buttonPorteEst.setClickable(true);
+                        buttonPorteEst.setBackgroundColor(Color.YELLOW);
+                    }
                     break;
                 case "O":
-                    setSud();
+                    if(arrayList.get(roomIndex).getMurSud().getBitmap() != null) {
+                        buttonPorteOuest.setClickable(false);
+                        buttonPorteOuest.setBackgroundColor(Color.TRANSPARENT);
+                        setImageMurSud();
+                        buttonPorteSud.setClickable(true);
+                        buttonPorteSud.setBackgroundColor(Color.YELLOW);
+                    }
                     break;
             }
+            setupPortes();
         });
 
         buttonDroite.setOnClickListener((v)->{
             switch (direction) {
                 case "N":
-                    setEst();
+                    if(arrayList.get(roomIndex).getMurEst().getBitmap() != null) {
+                        buttonPorteNord.setClickable(false);
+                        buttonPorteNord.setBackgroundColor(Color.TRANSPARENT);
+                        setImageMurEst();
+                        buttonPorteEst.setClickable(true);
+                        buttonPorteEst.setBackgroundColor(Color.YELLOW);
+                    }
                     break;
                 case "E":
-                    setSud();
+                    if(arrayList.get(roomIndex).getMurSud().getBitmap() != null) {
+                        buttonPorteEst.setClickable(false);
+                        buttonPorteEst.setBackgroundColor(Color.TRANSPARENT);
+                        setImageMurSud();
+                        buttonPorteSud.setClickable(true);
+                        buttonPorteSud.setBackgroundColor(Color.YELLOW);
+                    }
                     break;
                 case "S":
-                    setOuest();
+                    if(arrayList.get(roomIndex).getMurOuest().getBitmap() != null) {
+                        buttonPorteSud.setClickable(false);
+                        buttonPorteSud.setBackgroundColor(Color.TRANSPARENT);
+                        setImageMurOuest();
+                        buttonPorteOuest.setClickable(true);
+                        buttonPorteOuest.setBackgroundColor(Color.YELLOW);
+                    }
                     break;
                 case "O":
-                    setNord();
+                    if(arrayList.get(roomIndex).getMurNord().getBitmap() != null) {
+                        buttonPorteOuest.setClickable(false);
+                        buttonPorteOuest.setBackgroundColor(Color.TRANSPARENT);
+                        setImageMurNord();
+                        buttonPorteNord.setClickable(true);
+                        buttonPorteNord.setBackgroundColor(Color.YELLOW);
+                    }
                     break;
             }
+            setupPortes();
         });
 
-        buttonPorte = new Button(this);
+        setupPortes();
+
+    }
+
+    public void setImageMurNord(){
+            imageView.setImageBitmap(arrayList.get(roomIndex).getMurNord().getBitmap());
+            this.direction = "N";
+    }
+
+    public void setImageMurEst(){
+            imageView.setImageBitmap(arrayList.get(roomIndex).getMurEst().getBitmap());
+            this.direction = "E";
+    }
+
+    public void setImageMurSud(){
+            imageView.setImageBitmap(arrayList.get(roomIndex).getMurSud().getBitmap());
+            this.direction = "S";
+    }
+
+    public void setImageMurOuest(){
+            imageView.setImageBitmap(arrayList.get(roomIndex).getMurOuest().getBitmap());
+            this.direction = "O";
+    }
+
+    public void setupPortes(){
+
+        buttonPorteNord = new Button(this);
+        buttonPorteEst = new Button(this);
+        buttonPorteSud = new Button(this);
+        buttonPorteOuest = new Button(this);
+
         switch (direction) {
             case "N":
-                ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                params.width = arrayList.get(roomIndex).getMurNord().getPortes().get(0).width();
-                params.height = arrayList.get(roomIndex).getMurNord().getPortes().get(0).height();
-                buttonPorte.setLayoutParams(params);
-                buttonPorte.setX(arrayList.get(roomIndex).getMurNord().getPortes().get(0).left);
-                buttonPorte.setY(arrayList.get(roomIndex).getMurNord().getPortes().get(0).top);
-                buttonPorte.setBackgroundColor(Color.YELLOW);
-                Log.i("TEST", "X=" + buttonPorte.getX() + "Y=" + buttonPorte.getY() + "W=" + buttonPorte.getWidth() + "H=" + buttonPorte.getHeight());
-                ViewRoomActivity.this.addContentView(buttonPorte, buttonPorte.getLayoutParams());
+                if(arrayList.get(roomIndex).getMurNord().getPortes().size() != 0) {
+                    ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    params.width = arrayList.get(roomIndex).getMurNord().getPortes().get(0).width();
+                    params.height = arrayList.get(roomIndex).getMurNord().getPortes().get(0).height();
+                    buttonPorteNord.setLayoutParams(params);
+                    buttonPorteNord.setX(arrayList.get(roomIndex).getMurNord().getPortes().get(0).left);
+                    buttonPorteNord.setY(arrayList.get(roomIndex).getMurNord().getPortes().get(0).top);
+                    buttonPorteNord.setBackgroundColor(Color.YELLOW);
+                    Log.i("TEST", "X=" + buttonPorteNord.getX() + "Y=" + buttonPorteNord.getY() + "W=" + buttonPorteNord.getWidth() + "H=" + buttonPorteNord.getHeight());
+                    ViewRoomActivity.this.addContentView(buttonPorteNord, buttonPorteNord.getLayoutParams());
+                }
                 break;
             case "E":
-                setSud();
+                if(arrayList.get(roomIndex).getMurEst().getPortes().size() != 0) {
+                    ViewGroup.LayoutParams paramsE = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    paramsE.width = arrayList.get(roomIndex).getMurEst().getPortes().get(0).width();
+                    paramsE.height = arrayList.get(roomIndex).getMurEst().getPortes().get(0).height();
+                    buttonPorteEst.setLayoutParams(paramsE);
+                    buttonPorteEst.setX(arrayList.get(roomIndex).getMurEst().getPortes().get(0).left);
+                    buttonPorteEst.setY(arrayList.get(roomIndex).getMurEst().getPortes().get(0).top);
+                    buttonPorteEst.setBackgroundColor(Color.YELLOW);
+                    Log.i("TEST", "X=" + buttonPorteEst.getX() + "Y=" + buttonPorteEst.getY() + "W=" + buttonPorteEst.getWidth() + "H=" + buttonPorteEst.getHeight());
+                    ViewRoomActivity.this.addContentView(buttonPorteEst, buttonPorteEst.getLayoutParams());
+                }
                 break;
             case "S":
-                setOuest();
+                if(arrayList.get(roomIndex).getMurEst().getPortes().size() != 0) {
+                    ViewGroup.LayoutParams paramsS = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    paramsS.width = arrayList.get(roomIndex).getMurSud().getPortes().get(0).width();
+                    paramsS.height = arrayList.get(roomIndex).getMurSud().getPortes().get(0).height();
+                    buttonPorteSud.setLayoutParams(paramsS);
+                    buttonPorteSud.setX(arrayList.get(roomIndex).getMurSud().getPortes().get(0).left);
+                    buttonPorteSud.setY(arrayList.get(roomIndex).getMurSud().getPortes().get(0).top);
+                    buttonPorteSud.setBackgroundColor(Color.YELLOW);
+                    Log.i("TEST", "X=" + buttonPorteSud.getX() + "Y=" + buttonPorteSud.getY() + "W=" + buttonPorteSud.getWidth() + "H=" + buttonPorteSud.getHeight());
+                    ViewRoomActivity.this.addContentView(buttonPorteSud, buttonPorteSud.getLayoutParams());
+                }
                 break;
             case "O":
-                setNord();
+                if(arrayList.get(roomIndex).getMurOuest().getPortes().size() != 0) {
+                    ViewGroup.LayoutParams paramsO = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    paramsO.width = arrayList.get(roomIndex).getMurOuest().getPortes().get(0).width();
+                    paramsO.height = arrayList.get(roomIndex).getMurOuest().getPortes().get(0).height();
+                    buttonPorteOuest.setLayoutParams(paramsO);
+                    buttonPorteOuest.setX(arrayList.get(roomIndex).getMurOuest().getPortes().get(0).left);
+                    buttonPorteOuest.setY(arrayList.get(roomIndex).getMurOuest().getPortes().get(0).top);
+                    buttonPorteOuest.setBackgroundColor(Color.YELLOW);
+                    Log.i("TEST", "X=" + buttonPorteOuest.getX() + "Y=" + buttonPorteOuest.getY() + "W=" + buttonPorteOuest.getWidth() + "H=" + buttonPorteOuest.getHeight());
+                    ViewRoomActivity.this.addContentView(buttonPorteOuest, buttonPorteOuest.getLayoutParams());
+                }
                 break;
         }
 
-        buttonPorte.setOnClickListener((v)->{
+        buttonPorteNord.setOnClickListener((v)->{
             Toast.makeText(ViewRoomActivity.this, "Porte", Toast.LENGTH_SHORT).show();
         });
-
-    }
-
-    public void setNord(){
-        if(arrayList.get(roomIndex).getMurNord().getBitmap() != null){
-            imageView.setImageBitmap(arrayList.get(roomIndex).getMurNord().getBitmap());
-            imageView.getLayoutParams().height = 1080;
-            imageView.getLayoutParams().width = 1080;
-            this.direction = "N";
-        }
-    }
-
-    public void setEst(){
-        if(arrayList.get(roomIndex).getMurEst().getBitmap() != null){
-            imageView.setImageBitmap(arrayList.get(roomIndex).getMurEst().getBitmap());
-            imageView.getLayoutParams().height = 1080;
-            imageView.getLayoutParams().width = 1080;
-            this.direction = "E";
-        }
-    }
-
-    public void setSud(){
-        if(arrayList.get(roomIndex).getMurSud().getBitmap() != null){
-            imageView.setImageBitmap(arrayList.get(roomIndex).getMurSud().getBitmap());
-            imageView.getLayoutParams().height = 1080;
-            imageView.getLayoutParams().width = 1080;
-            this.direction = "S";
-        }
-    }
-
-    public void setOuest(){
-        if(arrayList.get(roomIndex).getMurOuest().getBitmap() != null){
-            imageView.setImageBitmap(arrayList.get(roomIndex).getMurOuest().getBitmap());
-            imageView.getLayoutParams().height = 1080;
-            imageView.getLayoutParams().width = 1080;
-            this.direction = "O";
-        }
     }
 
 }

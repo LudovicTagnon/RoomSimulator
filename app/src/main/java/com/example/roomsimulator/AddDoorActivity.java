@@ -65,6 +65,7 @@ public class AddDoorActivity extends AppCompatActivity {
         buttonConfirmer = findViewById(R.id.buttonConfirmerPorte);
 
         buttonConfirmer.setOnClickListener((b)->{
+            if(rect != null) {
                 switch (direction) {
                     case "N":
                         arrayList.get(roomIndex).getMurNord().getPortes().add(rect);
@@ -79,6 +80,7 @@ public class AddDoorActivity extends AppCompatActivity {
                         arrayList.get(roomIndex).getMurOuest().getPortes().add(rect);
                         break;
                 }
+            }
         });
 
 
@@ -122,7 +124,6 @@ public class AddDoorActivity extends AppCompatActivity {
     public void setSud(){
         if(arrayList.get(roomIndex).getMurSud().getBitmap() != null){
             imageView.setImageBitmap(arrayList.get(roomIndex).getMurSud().getBitmap());
-
             this.direction = "S";
         }
     }
