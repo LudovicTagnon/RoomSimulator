@@ -75,7 +75,7 @@ public class CreationActivity extends AppCompatActivity {
     {
         Enregistrement enregistrement = new Enregistrement();
         try {
-            enregistrement.save();
+            enregistrement.save(CreationActivity.this, "storage.json");
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }

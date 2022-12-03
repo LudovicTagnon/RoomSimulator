@@ -1,13 +1,19 @@
 package com.example.roomsimulator;
 
+import android.content.Context;
+import android.graphics.Rect;
 import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collection;
 
 
 public class Enregistrement {
@@ -17,7 +23,10 @@ public class Enregistrement {
     private String jsonObject = "";
 
 
-    public void save() throws JSONException {
+    public void save(Context context, String fileName) throws JSONException {
+
+
+
         pieces = RoomManager.getInstance().getArrayListRooms();
         piecesCopy = new ArrayList<>();
 
@@ -62,8 +71,54 @@ public class Enregistrement {
 
         Log.i("test", jsonObject);
 
-    }
-    public void load() throws JSONException {
+        String jsonString = jsonObject;
+        try {
+            FileOutputStream fos = context.openFileOutput(fileName,Context.MODE_PRIVATE);
+            if (jsonString != null) {
+                fos.write(jsonString.getBytes());
+            }
+            fos.close();
+        }
+        catch (IOException fileNotFound) {
+            Log.i("ERREUR", "JSON FILE NOT FOUND");
+        }
 
+    }
+    public void load(Context context, String fileName) throws JSONException, IOException {
+
+        FileInputStream fis = context.openFileInput(fileName);
+
+        if(fis != null){
+            String jsonString = getFileContent(fis);
+            Log.i("TEST", jsonString);
+
+            Type collectionType = new TypeToken<ArrayList<RoomModel>>(){}.getType();
+            ArrayList<RoomModel> arrayListTmp = new Gson().fromJson(jsonString, collectionType);
+
+            RoomManager.getInstance().setArrayListRooms(arrayListTmp);
+
+
+        }
+
+        Log.i("TEST", "LOAD SUCCESSFUL");
+    }
+
+
+    public String getFileContent(FileInputStream fis){
+        StringBuilder sb = new StringBuilder();
+        Reader r = null;
+        try {
+            r = new InputStreamReader(fis, "UTF-8");
+            int ch = r.read();
+            while (ch >= 0){
+                sb.append((char) ch);
+                ch = r.read();
+            }
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return sb.toString();
     }
 }

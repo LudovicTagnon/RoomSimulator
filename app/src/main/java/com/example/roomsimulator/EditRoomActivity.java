@@ -108,6 +108,7 @@ public class EditRoomActivity extends AppCompatActivity implements SensorEventLi
             ic.putExtra("direction", "N");
             startActivity(ic);
             buttonNord.setTextColor(Color.TRANSPARENT);
+
         });
         buttonEst.setOnClickListener((v)->{
             Intent ic = new Intent(EditRoomActivity.this, PhotoActivity.class);
