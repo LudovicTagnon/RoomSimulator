@@ -80,33 +80,6 @@ public class AddDoorActivity extends AppCompatActivity {
 
         buttonConfirmer = findViewById(R.id.buttonConfirmerPorte);
 
-        buttonConfirmer.setOnClickListener((b)->{
-            //Lier à la prochaine pièce
-            if (rect != null && selectedRoom != null) {
-                if(selectedRoom.getMurNord().getImage() != null)
-                {
-                    DoorModel d = new DoorModel(rect, selectedRoom.getName());
-                    switch (direction) {
-                        case "N":
-                            arrayList.get(roomIndex).getMurNord().getPortes().add(d);
-                            break;
-                        case "E":
-                            arrayList.get(roomIndex).getMurEst().getPortes().add(d);
-                            break;
-                        case "S":
-                            arrayList.get(roomIndex).getMurSud().getPortes().add(d);
-                            break;
-                        case "O":
-                            arrayList.get(roomIndex).getMurOuest().getPortes().add(d);
-                            break;
-                    }
-                    Toast.makeText(this, "Porte ajoutée!", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(this, "Erreur: Il faut ajouter les photos des murs avant d'ajouter des portes", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
 
         imageView.setOnTouchListener(
                 new View.OnTouchListener() {
@@ -149,6 +122,32 @@ public class AddDoorActivity extends AppCompatActivity {
             public void onLongItemClick(View view, int position) {}
         }));
 
+        buttonConfirmer.setOnClickListener((b)->{
+            //Lier à la prochaine pièce
+            if (rect != null && selectedRoom != null) {
+                if(selectedRoom.getMurNord().getBitmap() != null)
+                {
+                    DoorModel d = new DoorModel(rect, selectedRoom.getName());
+                    switch (direction) {
+                        case "N":
+                            arrayList.get(roomIndex).getMurNord().getPortes().add(d);
+                            break;
+                        case "E":
+                            arrayList.get(roomIndex).getMurEst().getPortes().add(d);
+                            break;
+                        case "S":
+                            arrayList.get(roomIndex).getMurSud().getPortes().add(d);
+                            break;
+                        case "O":
+                            arrayList.get(roomIndex).getMurOuest().getPortes().add(d);
+                            break;
+                    }
+                    Toast.makeText(this, "Porte ajoutée!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(this, "Erreur: Il faut ajouter les photos des murs avant d'ajouter des portes", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
     }
 

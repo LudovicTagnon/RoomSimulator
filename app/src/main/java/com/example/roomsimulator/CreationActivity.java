@@ -5,6 +5,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -39,9 +40,20 @@ public class CreationActivity extends AppCompatActivity {
         buttonNouvellePiece = findViewById(R.id.buttonNouvellePiece);
 
         buttonNouvellePiece.setOnClickListener((v)->{
-            RoomModel model = new RoomModel(String.valueOf(inputText.getText()));
-            arrayList.add(model);
-            getRoomList();
+            boolean flag = true;
+            for (RoomModel r: arrayList) {
+                if(String.valueOf(inputText.getText()).equals(r.getName())){
+                    flag = false;
+                }
+            }
+            if(flag)
+            {
+                RoomModel nouvellePiece = new RoomModel(String.valueOf(inputText.getText()));
+                arrayList.add(nouvellePiece);
+                getRoomList();
+            }else{
+                Toast.makeText(CreationActivity.this, "Il existe déjà un pièce avec ce nom", Toast.LENGTH_SHORT).show();
+            }
 
         });
 

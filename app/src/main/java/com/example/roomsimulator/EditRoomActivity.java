@@ -70,10 +70,12 @@ public class EditRoomActivity extends AppCompatActivity implements SensorEventLi
         arrayList = RoomManager.getInstance().getArrayListRooms();
 
         //Lie l'imageview xml à la variable imageview du room manager
-        arrayList.get(roomIndex).getMurNord().setImage(findViewById(R.id.imageViewNord));
-        arrayList.get(roomIndex).getMurEst().setImage(findViewById(R.id.imageViewEst));
-        arrayList.get(roomIndex).getMurSud().setImage(findViewById(R.id.imageViewSud));
-        arrayList.get(roomIndex).getMurOuest().setImage(findViewById(R.id.imageViewOuest));
+        if(arrayList.size() > roomIndex){
+            arrayList.get(roomIndex).getMurNord().setImage(findViewById(R.id.imageViewNord));
+            arrayList.get(roomIndex).getMurEst().setImage(findViewById(R.id.imageViewEst));
+            arrayList.get(roomIndex).getMurSud().setImage(findViewById(R.id.imageViewSud));
+            arrayList.get(roomIndex).getMurOuest().setImage(findViewById(R.id.imageViewOuest));
+        }
 
         //Lie les boutons xml aux boutons du code
         Button buttonImageNord = findViewById(R.id.buttonAjouterPhotoN);

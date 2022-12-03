@@ -1,6 +1,5 @@
 package com.example.roomsimulator;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.ViewGroup;
@@ -15,10 +14,11 @@ import java.util.ArrayList;
 public class ViewRoomActivity extends AppCompatActivity {
 
     private ArrayList<RoomModel> arrayList;
-
-    private RoomModel currentRoom;
     private int roomIndex;
-    private ImageView imageView;
+    private String direction;
+
+    private ImageView imageAffichee;
+
     private Button buttonGauche;
     private Button buttonDroite;
 
@@ -26,7 +26,6 @@ public class ViewRoomActivity extends AppCompatActivity {
     ArrayList<Button> buttonPorteEst = new ArrayList<>();
     ArrayList<Button> buttonPorteSud = new ArrayList<>();
     ArrayList<Button> buttonPorteOuest = new ArrayList<>();
-    private String direction = new String();
 
     WallModel MurNord;
     WallModel MurEst;
@@ -42,7 +41,7 @@ public class ViewRoomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_room);
 
         //Lie les objets xml aux variables de l'activité
-        imageView = findViewById(R.id.imageViewCourante);
+        imageAffichee = findViewById(R.id.imageViewCourante);
         buttonGauche = findViewById(R.id.buttonLeft);
         buttonDroite = findViewById(R.id.buttonRight);
 
@@ -53,53 +52,32 @@ public class ViewRoomActivity extends AppCompatActivity {
             roomIndex = Integer.parseInt(value);
         }
 
-        //Récupère les rooms
-        arrayList = RoomManager.getInstance().getArrayListRooms();
+        arrayList = RoomManager.getInstance().getArrayListRooms();        //Récupère les rooms
 
-        setup();
+        setup_Murs_Portes();        //Affiche le mur et les portes
 
-        //Listener Bouton Gauche
-        appelBoutonGauche();
+        appelBoutonGauche();        //Listener Bouton Gauche
 
-        //Listener Bouton Droit
-        appelBoutonDroit();
+        appelBoutonDroit();        //Listener Bouton Droit
+
 
     }
 
-    private void setup(){
-        //Direction Initiale
-        this.direction = "N";
+    private void setup_Murs_Portes(){
+        this.direction = "N";        //Direction Initiale
 
-        //Récupère les murs
+        //Récupère les murs de la pièce actuelle
         MurNord = arrayList.get(roomIndex).getMurNord();
         MurEst = arrayList.get(roomIndex).getMurEst();
         MurSud = arrayList.get(roomIndex).getMurSud();
         MurOuest = arrayList.get(roomIndex).getMurOuest();
 
-        //Image par défaut
-        this.setImageMurChoisi("N");
+        this.setImageMurChoisi(this.direction);        //Affiche le mur par défaut et Enregistre la nouvelle direction
 
-        //Met en place les portes
-        setupPortes();
+        setupPortes();        //Met en place les portes
+
     }
 
-    private void ListenerPortes(ArrayList<Button> buttons, WallModel Mur) {
-        for (Button b: buttons) {
-            b.setOnClickListener((v)->{
-                Toast.makeText(ViewRoomActivity.this, "Porte", Toast.LENGTH_SHORT).show();
-
-                int buttonIndex = buttons.indexOf(b);
-
-                for (int i = 0; i < arrayList.size(); i++) {
-                    if(arrayList.get(i).getName().equals(Mur.getPortes().get(buttonIndex).getNextRoom())){
-                        this.roomIndex = i;
-                    }
-                }
-                setup();
-
-            });
-        }
-    }
 
     @Override
     public void onBackPressed()
@@ -230,7 +208,7 @@ public class ViewRoomActivity extends AppCompatActivity {
                     break;
             }
 
-            for (Button b : buttonsApres) {
+            for (Button b : buttonsApres) { // Désactive les portes de l'ancien mur
                 b.setClickable(true);
                 b.setBackgroundColor(Color.YELLOW);
             }
@@ -240,13 +218,13 @@ public class ViewRoomActivity extends AppCompatActivity {
 
     public void setImageMurChoisi(String direction){
         if(direction.equals("N")){
-            imageView.setImageBitmap(arrayList.get(roomIndex).getMurNord().getBitmap());
+            imageAffichee.setImageBitmap(arrayList.get(roomIndex).getMurNord().getBitmap());
         } else if(direction.equals("E")){
-            imageView.setImageBitmap(arrayList.get(roomIndex).getMurEst().getBitmap());
+            imageAffichee.setImageBitmap(arrayList.get(roomIndex).getMurEst().getBitmap());
         }else if(direction.equals("S")){
-            imageView.setImageBitmap(arrayList.get(roomIndex).getMurSud().getBitmap());
+            imageAffichee.setImageBitmap(arrayList.get(roomIndex).getMurSud().getBitmap());
         }else if(direction.equals("O")){
-            imageView.setImageBitmap(arrayList.get(roomIndex).getMurOuest().getBitmap());
+            imageAffichee.setImageBitmap(arrayList.get(roomIndex).getMurOuest().getBitmap());
         }
         this.direction = direction;
     }
@@ -254,27 +232,27 @@ public class ViewRoomActivity extends AppCompatActivity {
 
     public void setupPortes(){
 
-        ArrayList<Button> buttonActuel = null;
+        ArrayList<Button> BouttonsDuMur = null;     // ArrayList temporaire pour afficher les bouttons
         WallModel MurActuel = null;
 
-        //Selon la direction actuelle
+        //Enregistre le boutton actuel et le mur actuel
         switch (this.direction) {
             case "N":
-                buttonActuel = buttonPorteNord;
+                BouttonsDuMur = buttonPorteNord;
                 MurActuel = MurNord;
                 break;
             case "E":
-                buttonActuel = buttonPorteEst;
+                BouttonsDuMur = buttonPorteEst;
                 MurActuel = MurEst;
 
                 break;
             case "S":
-                buttonActuel = buttonPorteSud;
+                BouttonsDuMur = buttonPorteSud;
                 MurActuel = MurSud;
 
                 break;
             case "O":
-                buttonActuel = buttonPorteOuest;
+                BouttonsDuMur = buttonPorteOuest;
                 MurActuel = MurOuest;
 
                 break;
@@ -282,26 +260,30 @@ public class ViewRoomActivity extends AppCompatActivity {
 
         assert MurActuel != null;
         if(MurActuel.getPortes().size() != 0 ) { // Si il existe des portes dans ce mur
-            //Crée un bouton avec la position du rectangle de la porte
+            //Crée les boutons à partir de la position du rectangles de chaque porte
             int i=0;
-            for (DoorModel door : MurActuel.getPortes()) {
+            for (DoorModel door : MurActuel.getPortes()) { // Pour chaque porte
                 if(!door.isAddedToView()) { // Si le bouton de la porte n'est pas encore ajouté
-                    assert buttonActuel != null;
-                    buttonActuel.add(new Button(this));
+                    assert BouttonsDuMur != null;
+                    BouttonsDuMur.add(new Button(this));
                     ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     params.width = door.getPosition().width();
                     params.height = door.getPosition().height();
-                    buttonActuel.get(i).setLayoutParams(params);
-                    buttonActuel.get(i).setX(door.getPosition().left);
-                    buttonActuel.get(i).setY(door.getPosition().top);
-                    buttonActuel.get(i).setBackgroundColor(Color.YELLOW);
+                    BouttonsDuMur.get(i).setLayoutParams(params);
+                    BouttonsDuMur.get(i).setX(door.getPosition().left);
+                    BouttonsDuMur.get(i).setY(door.getPosition().top);
+                    BouttonsDuMur.get(i).setBackgroundColor(Color.YELLOW);
+                    BouttonsDuMur.get(i).setClickable(true);
+                    Toast.makeText(ViewRoomActivity.this, "Portes affichées", Toast.LENGTH_SHORT).show();
 
-                    Log.i("TEST", "X=" + buttonActuel.get(i).getX() + "Y=" + buttonActuel.get(i).getY() + "W=" + buttonActuel.get(i).getWidth() + "H=" + buttonActuel.get(i).getHeight());
-                    ViewRoomActivity.this.addContentView(buttonActuel.get(i), buttonActuel.get(i).getLayoutParams());
+                    Log.i("TEST", "X=" + BouttonsDuMur.get(i).getX() + "Y=" + BouttonsDuMur.get(i).getY() + "W=" + BouttonsDuMur.get(i).getWidth() + "H=" + BouttonsDuMur.get(i).getHeight());
+                    ViewRoomActivity.this.addContentView(BouttonsDuMur.get(i), BouttonsDuMur.get(i).getLayoutParams());
                     i++;
                     door.setAddedToView(true);
                 }
             }
+        }else{
+            Toast.makeText(ViewRoomActivity.this, "Pas de portes dans ce mur", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -310,8 +292,55 @@ public class ViewRoomActivity extends AppCompatActivity {
         ListenerPortes(buttonPorteSud, MurSud);
         ListenerPortes(buttonPorteOuest, MurOuest);
 
-
     }
 
+
+    private void ListenerPortes(ArrayList<Button> buttons, WallModel Mur) {
+        for (Button b: buttons) {
+            b.setOnClickListener((v)->{ // la porte s'ouvre
+                Toast.makeText(ViewRoomActivity.this, "Porte", Toast.LENGTH_SHORT).show();
+
+                int buttonIndex = buttons.indexOf(b);
+
+                // Changement de pièce
+                for (int i = 0; i < arrayList.size(); i++) {
+                    if(arrayList.get(i).getName().equals(Mur.getPortes().get(buttonIndex).getNextRoom())){
+                        this.roomIndex = i;
+                    }
+                }
+
+                // Déclare que les portes ne sont plus dans la vue
+                for (DoorModel d: Mur.getPortes()) {
+                    d.setAddedToView(false);
+                }
+                DestroyAllButtons(); //
+                setup_Murs_Portes(); // on affiche la nouvelle image/portes
+
+            });
+        }
+    }
+
+    private void DestroyAllButtons(){
+        for (Button b: buttonPorteNord) {
+            b.setClickable(false);
+            b.setBackgroundColor(Color.TRANSPARENT);
+        }
+        for (Button b: buttonPorteEst) {
+            b.setClickable(false);
+            b.setBackgroundColor(Color.TRANSPARENT);
+        }
+        for (Button b: buttonPorteSud) {
+            b.setClickable(false);
+            b.setBackgroundColor(Color.TRANSPARENT);
+        }
+        for (Button b: buttonPorteOuest) {
+            b.setClickable(false);
+            b.setBackgroundColor(Color.TRANSPARENT);
+        }
+        buttonPorteNord = new ArrayList<Button>();
+        buttonPorteEst = new ArrayList<Button>();
+        buttonPorteSud = new ArrayList<Button>();
+        buttonPorteOuest = new ArrayList<Button>();
+    }
 
 }
