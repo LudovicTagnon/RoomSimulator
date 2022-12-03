@@ -16,6 +16,8 @@ public class PhotoActivity extends AppCompatActivity {
     private int roomIndex;
     private String direction;
 
+    private RoomModel currentRoom;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,8 @@ public class PhotoActivity extends AppCompatActivity {
             roomIndex = Integer.parseInt(extras.getString("roomIndex"));
             direction = extras.getString("direction");
         }
+
+        currentRoom = RoomManager.getInstance().getArrayListRooms().get(roomIndex);
 
         Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if(i.resolveActivity(getPackageManager()) != null){
@@ -45,22 +49,22 @@ public class PhotoActivity extends AppCompatActivity {
 
             FileOutputStream fos;
             try {
-                fos = openFileOutput("image.data", MODE_APPEND);
+                fos = openFileOutput(currentRoom.getName() + "_" + direction + "_" +".data", MODE_PRIVATE);
                 imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
 
 
                 if(direction.equals("N")){
-                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getMurNord().getImage().setImageBitmap(imageBitmap);
-                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getMurNord().setBitmap(imageBitmap);
+                    currentRoom.getMurNord().getImage().setImageBitmap(imageBitmap);
+                    currentRoom.getMurNord().setBitmap(imageBitmap);
                 }else if(direction.equals("E")){
-                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getMurEst().getImage().setImageBitmap(imageBitmap);
-                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getMurEst().setBitmap(imageBitmap);
+                    currentRoom.getMurEst().getImage().setImageBitmap(imageBitmap);
+                    currentRoom.getMurEst().setBitmap(imageBitmap);
                 }else if(direction.equals("S")){
-                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getMurSud().getImage().setImageBitmap(imageBitmap);
-                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getMurSud().setBitmap(imageBitmap);
+                    currentRoom.getMurSud().getImage().setImageBitmap(imageBitmap);
+                    currentRoom.getMurSud().setBitmap(imageBitmap);
                 }else if(direction.equals("O")){
-                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getMurOuest().getImage().setImageBitmap(imageBitmap);
-                    RoomManager.getInstance().getArrayListRooms().get(roomIndex).getMurOuest().setBitmap(imageBitmap);
+                    currentRoom.getMurOuest().getImage().setImageBitmap(imageBitmap);
+                    currentRoom.getMurOuest().setBitmap(imageBitmap);
                 }
 
                 fos.flush();

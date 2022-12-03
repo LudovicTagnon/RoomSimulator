@@ -76,60 +76,60 @@ public class EditRoomActivity extends AppCompatActivity implements SensorEventLi
         arrayList.get(roomIndex).getMurOuest().setImage(findViewById(R.id.imageViewOuest));
 
         //Lie les boutons xml aux boutons du code
-        Button buttonNord = findViewById(R.id.buttonAjouterPhotoN);
-        Button buttonEst = findViewById(R.id.buttonAjouterPhotoE);
-        Button buttonSud = findViewById(R.id.buttonAjouterPhotoS);
-        Button buttonOuest = findViewById(R.id.buttonAjouterPhotoO);
+        Button buttonImageNord = findViewById(R.id.buttonAjouterPhotoN);
+        Button buttonImageEst = findViewById(R.id.buttonAjouterPhotoE);
+        Button buttonImageSud = findViewById(R.id.buttonAjouterPhotoS);
+        Button buttonImageOuest = findViewById(R.id.buttonAjouterPhotoO);
 
 
         //Affiche les images de chaque mur dans leur cadre respectif si elles existent
 
         if(arrayList.get(roomIndex).getMurNord().getBitmap() != null) {
             arrayList.get(roomIndex).getMurNord().getImage().setImageBitmap(arrayList.get(roomIndex).getMurNord().getBitmap());
-            buttonNord.setTextColor(Color.TRANSPARENT);
+            buttonImageNord.setTextColor(Color.TRANSPARENT);
         }
         if(arrayList.get(roomIndex).getMurEst().getBitmap() != null) {
             arrayList.get(roomIndex).getMurEst().getImage().setImageBitmap(arrayList.get(roomIndex).getMurEst().getBitmap());
-            buttonEst.setTextColor(Color.TRANSPARENT);
+            buttonImageEst.setTextColor(Color.TRANSPARENT);
         }
         if(arrayList.get(roomIndex).getMurSud().getBitmap() != null) {
             arrayList.get(roomIndex).getMurSud().getImage().setImageBitmap(arrayList.get(roomIndex).getMurSud().getBitmap());
-            buttonSud.setTextColor(Color.TRANSPARENT);
+            buttonImageSud.setTextColor(Color.TRANSPARENT);
         }
         if(arrayList.get(roomIndex).getMurOuest().getBitmap() != null) {
             arrayList.get(roomIndex).getMurOuest().getImage().setImageBitmap(arrayList.get(roomIndex).getMurOuest().getBitmap());
-            buttonOuest.setTextColor(Color.TRANSPARENT);
+            buttonImageOuest.setTextColor(Color.TRANSPARENT);
         }
 
 
-        buttonNord.setOnClickListener((v)->{
+        buttonImageNord.setOnClickListener((v)->{
             Intent ic = new Intent(EditRoomActivity.this, PhotoActivity.class);
             ic.putExtra("roomIndex", Integer.toString(roomIndex));
             ic.putExtra("direction", "N");
             startActivity(ic);
-            buttonNord.setTextColor(Color.TRANSPARENT);
+            buttonImageNord.setTextColor(Color.TRANSPARENT);
 
         });
-        buttonEst.setOnClickListener((v)->{
+        buttonImageEst.setOnClickListener((v)->{
             Intent ic = new Intent(EditRoomActivity.this, PhotoActivity.class);
             ic.putExtra("roomIndex", Integer.toString(roomIndex));
             ic.putExtra("direction", "E");
             startActivity(ic);
-            buttonEst.setTextColor(Color.TRANSPARENT);
+            buttonImageEst.setTextColor(Color.TRANSPARENT);
         });
-        buttonSud.setOnClickListener((v)->{
+        buttonImageSud.setOnClickListener((v)->{
             Intent ic = new Intent(EditRoomActivity.this, PhotoActivity.class);
             ic.putExtra("roomIndex", Integer.toString(roomIndex));
             ic.putExtra("direction", "S");
             startActivity(ic);
-            buttonSud.setTextColor(Color.TRANSPARENT);
+            buttonImageSud.setTextColor(Color.TRANSPARENT);
         });
-        buttonOuest.setOnClickListener((v)->{
+        buttonImageOuest.setOnClickListener((v)->{
             Intent ic = new Intent(EditRoomActivity.this, PhotoActivity.class);
             ic.putExtra("roomIndex", Integer.toString(roomIndex));
             ic.putExtra("direction", "O");
             startActivity(ic);
-            buttonOuest.setTextColor(Color.TRANSPARENT);
+            buttonImageOuest.setTextColor(Color.TRANSPARENT);
         });
 
         ImageButton buttonPorteNord = findViewById(R.id.buttonPorteNord);

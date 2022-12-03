@@ -1,8 +1,12 @@
 package com.example.roomsimulator;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.util.Log;
+import android.widget.ImageView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -100,6 +104,8 @@ public class Enregistrement {
 
         }
 
+        loadImages(context);
+
         Log.i("TEST", "LOAD SUCCESSFUL");
     }
 
@@ -120,5 +126,68 @@ public class Enregistrement {
             throw new RuntimeException(e);
         }
         return sb.toString();
+    }
+
+
+
+    public void loadImages(Context context){
+
+        ArrayList<RoomModel> pieces = RoomManager.getInstance().getArrayListRooms();
+
+        for (RoomModel r: pieces) {
+            String file = r.getName() + "_" + "N" + "_" +".data";
+            if (fileExist(context, file)){
+                try {
+                    FileInputStream fis = context.openFileInput(file);
+                    Bitmap bm = BitmapFactory.decodeStream(fis);
+                    r.getMurNord().setBitmap(bm);
+                }
+                catch (FileNotFoundException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+            file = r.getName() + "_" + "E" + "_" +".data";
+            if (fileExist(context, file)){
+                try {
+                    FileInputStream fis = context.openFileInput(file);
+                    Bitmap bm = BitmapFactory.decodeStream(fis);
+                    r.getMurEst().setBitmap(bm);
+                }
+                catch (FileNotFoundException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+            file = r.getName() + "_" + "S" + "_" +".data";
+            if (fileExist(context, file)){
+                try {
+                    FileInputStream fis = context.openFileInput(file);
+                    Bitmap bm = BitmapFactory.decodeStream(fis);
+                    r.getMurSud().setBitmap(bm);
+                }
+                catch (FileNotFoundException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+            file = r.getName() + "_" + "O" + "_" +".data";
+            if (fileExist(context, file)){
+                try {
+                    FileInputStream fis = context.openFileInput(file);
+                    Bitmap bm = BitmapFactory.decodeStream(fis);
+                    r.getMurOuest().setBitmap(bm);
+                }
+                catch (FileNotFoundException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public boolean fileExist(Context context, String fname){
+        File file = context.getFileStreamPath(fname);
+        return file.exists();
     }
 }
