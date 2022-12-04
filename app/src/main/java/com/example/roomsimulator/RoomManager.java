@@ -1,5 +1,9 @@
 package com.example.roomsimulator;
 
+import android.content.Context;
+import android.util.Log;
+import org.json.JSONException;
+
 import java.util.ArrayList;
 
 public class RoomManager {
@@ -23,5 +27,11 @@ public class RoomManager {
 
     public void setArrayListRooms(ArrayList<RoomModel> arrayListRooms) {
         this.arrayListRooms = arrayListRooms;
+    }
+
+    public void printRooms(Context context) throws JSONException {
+        Enregistrement enregistrement = new Enregistrement();
+        String rooms = enregistrement.save(context, "storage.json");
+        Log.i("TEST", rooms);
     }
 }

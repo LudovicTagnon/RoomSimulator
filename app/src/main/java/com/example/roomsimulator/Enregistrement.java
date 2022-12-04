@@ -27,7 +27,7 @@ public class Enregistrement {
     private String jsonObject = "";
 
 
-    public void save(Context context, String fileName) throws JSONException {
+    public String save(Context context, String fileName) throws JSONException {
 
 
 
@@ -86,7 +86,7 @@ public class Enregistrement {
         catch (IOException fileNotFound) {
             Log.i("ERREUR", "JSON FILE NOT FOUND");
         }
-
+        return jsonString;
     }
     public void load(Context context, String fileName) throws JSONException, IOException {
 

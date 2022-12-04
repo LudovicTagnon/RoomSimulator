@@ -105,18 +105,24 @@ public class AddDoorActivity extends AppCompatActivity {
 
         //============================================================================================
 
-        recyclerView = findViewById(R.id.recycler_view_rooms);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view_rooms);
         getRoomList();
 
 
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                for (int i = 0; i < arrayList.size(); i++) {
-                    recyclerView.getChildAt(i).setBackgroundColor(Color.WHITE);
+                Log.i("RECYCLERVIEW", " " + arrayList.size() + recyclerView.getChildCount() + position);
+                for (int i = 0; i < recyclerView.getChildCount(); i++) {
+                    if(recyclerView.getChildAt(i) != null){
+                        recyclerView.getChildAt(i).setBackgroundColor(Color.WHITE);
+                    }
                 }
                 selectedRoom = arrayList.get(position);
-                recyclerView.getChildAt(position).setBackgroundColor(Color.YELLOW);
+                if(recyclerView.getChildAt(position) != null) {
+                    recyclerView.getChildAt(position).setBackgroundColor(Color.YELLOW);
+                    recyclerView.getChildAt(position).invalidate();
+                }
             }
             @Override
             public void onLongItemClick(View view, int position) {}
@@ -144,7 +150,7 @@ public class AddDoorActivity extends AppCompatActivity {
                     }
                     Toast.makeText(this, "Porte ajoutée!", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(this, "Erreur: Il faut ajouter les photos des murs avant d'ajouter des portes", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Erreur: Il faut ajouter les photos du mur avant d'ajouter des portes", Toast.LENGTH_SHORT).show();
                 }
             }
         });

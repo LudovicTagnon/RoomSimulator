@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -60,6 +61,11 @@ public class ViewRoomActivity extends AppCompatActivity {
 
         appelBoutonDroit();        //Listener Bouton Droit
 
+        try {
+            RoomManager.getInstance().printRooms(ViewRoomActivity.this);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
