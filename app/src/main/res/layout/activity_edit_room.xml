@@ -164,6 +164,16 @@
             app:layout_constraintTop_toBottomOf="@+id/buttonAjouterPhotoN"
             app:layout_constraintBottom_toTopOf="@+id/imageViewSud"
             app:layout_constraintStart_toEndOf="@+id/buttonAjouterPhotoO"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewEst"/>
+            app:layout_constraintEnd_toStartOf="@+id/imageViewEst"
+    />
+    <ImageButton
+            android:layout_width="72dp"
+            android:layout_height="69dp"
+            app:srcCompat="@drawable/trash"
+            android:id="@+id/imageButtonTrash"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="12dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

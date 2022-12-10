@@ -63,4 +63,15 @@ public class RoomModel {
     public void setMurOuest(WallModel murOuest) {
         this.murOuest = murOuest;
     }
+
+    @Override
+    public String toString() {
+        return "RoomModel{" +
+                "name='" + name + '\'' +
+                ", murNord=" + murNord +
+                ", murEst=" + murEst +
+                ", murSud=" + murSud +
+                ", murOuest=" + murOuest +
+                '}';
+    }
 }

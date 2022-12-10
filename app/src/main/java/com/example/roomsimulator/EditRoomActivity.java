@@ -167,6 +167,16 @@ public class EditRoomActivity extends AppCompatActivity implements SensorEventLi
         });
 
 
+        ImageButton trashButton = findViewById(R.id.imageButtonTrash);
+        trashButton.setOnClickListener((v)->{
+            this.arrayList.remove(this.arrayList.get(roomIndex));
+            finish();
+        });
+
+
+
+
+
         //===============================================================================================
 
 

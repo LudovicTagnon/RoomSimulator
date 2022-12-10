@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -59,6 +60,7 @@ public class AddDoorActivity extends AppCompatActivity {
 
         //Associe l'imageView xml avec celle du code
         imageView = findViewById(R.id.imageViewAddDoor);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view_rooms);
 
         //Récupère les rooms
         arrayList = RoomManager.getInstance().getArrayListRooms();
@@ -105,11 +107,11 @@ public class AddDoorActivity extends AppCompatActivity {
 
         //============================================================================================
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view_rooms);
         getRoomList();
 
 
-        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getBaseContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Log.i("RECYCLERVIEW", " " + arrayList.size() + recyclerView.getChildCount() + position);
@@ -119,14 +121,15 @@ public class AddDoorActivity extends AppCompatActivity {
                     }
                 }
                 selectedRoom = arrayList.get(position);
-                if(recyclerView.getChildAt(position) != null) {
                     recyclerView.getChildAt(position).setBackgroundColor(Color.YELLOW);
                     recyclerView.getChildAt(position).invalidate();
-                }
+
+
             }
             @Override
             public void onLongItemClick(View view, int position) {}
         }));
+
 
         buttonConfirmer.setOnClickListener((b)->{
             //Lier à la prochaine pièce
@@ -188,6 +191,14 @@ public class AddDoorActivity extends AppCompatActivity {
     private void getRoomList() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MainAdapter(this, arrayList);
+        try {
+            RoomManager.getInstance().printRooms(getBaseContext());
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+        for(RoomModel room : arrayList){
+            Log.i("testRoomModel", room.toString());
+        }
         recyclerView.setAdapter(adapter);
     }
 

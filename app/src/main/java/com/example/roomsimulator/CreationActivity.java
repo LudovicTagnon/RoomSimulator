@@ -2,6 +2,7 @@ package com.example.roomsimulator;
 
 import android.content.Intent;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,6 +63,7 @@ public class CreationActivity extends AppCompatActivity {
             public void onItemClick(View view, int position) {
                 Intent ic = new Intent(CreationActivity.this, EditRoomActivity.class);
                 ic.putExtra("roomSelected", String.valueOf(position));
+                Log.i("Juliette", arrayList.get(position).getName());
                 startActivity(ic);
 
             }
@@ -74,6 +76,12 @@ public class CreationActivity extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getRoomList();
     }
 
     private void getRoomList() {
@@ -93,5 +101,6 @@ public class CreationActivity extends AppCompatActivity {
         }
         this.finish();
     }
+
 
 }

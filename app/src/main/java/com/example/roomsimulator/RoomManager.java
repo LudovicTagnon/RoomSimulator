@@ -32,6 +32,6 @@ public class RoomManager {
     public void printRooms(Context context) throws JSONException {
         Enregistrement enregistrement = new Enregistrement();
         String rooms = enregistrement.save(context, "storage.json");
-        Log.i("TEST", rooms);
+        Log.i("arrayList", rooms);
     }
 }
