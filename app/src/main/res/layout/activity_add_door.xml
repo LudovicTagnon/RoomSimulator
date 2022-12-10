@@ -35,14 +35,16 @@
             app:layout_constraintTop_toTopOf="@+id/imageViewAddDoor"
     />
     <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="332dp"
-            android:layout_height="212dp"
+            android:layout_width="324dp"
+            android:layout_height="243dp"
             android:id="@+id/recycler_view_rooms"
             tools:listitem="@layout/item_room"
             tools:ignore="MissingConsraints"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewAddDoor" android:layout_marginTop="32dp"/>
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewAddDoor"
+            android:layout_marginTop="24dp"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.roomsimulator;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     Activity activity;
     ArrayList<RoomModel> arrayList;
+    private int checkedPosition = -1;
 
     public MainAdapter(Activity activity, ArrayList<RoomModel> arrayList){
         this.activity = activity;
@@ -34,7 +36,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         RoomModel model = arrayList.get(position);
         holder.tvName.setText(model.getName());
+        if (position == checkedPosition) {
+            holder.itemView.setBackgroundColor(Color.YELLOW);
+        } else {
+            holder.itemView.setBackgroundColor(Color.WHITE);
+        }
     }
+
 
     @Override
     public int getItemCount() {
@@ -47,7 +55,20 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tv_name);
-            tvNumber = itemView.findViewById(R.id.tv_number);
         }
+    }
+
+    public boolean isChecked(int position) {
+        return checkedPosition == position;
+    }
+
+    public void setChecked(int position) {
+        int prevChecked = checkedPosition;
+        checkedPosition = position;
+
+        if (prevChecked != -1) {
+            notifyItemChanged(prevChecked);
+        }
+        notifyItemChanged(checkedPosition);
     }
 }

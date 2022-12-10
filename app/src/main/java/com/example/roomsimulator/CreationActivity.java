@@ -63,9 +63,7 @@ public class CreationActivity extends AppCompatActivity {
             public void onItemClick(View view, int position) {
                 Intent ic = new Intent(CreationActivity.this, EditRoomActivity.class);
                 ic.putExtra("roomSelected", String.valueOf(position));
-                Log.i("Juliette", arrayList.get(position).getName());
                 startActivity(ic);
-
             }
 
             @Override

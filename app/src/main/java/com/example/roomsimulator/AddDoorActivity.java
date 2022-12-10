@@ -12,13 +12,16 @@ import android.view.*;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class AddDoorActivity extends AppCompatActivity {
 
@@ -65,6 +68,9 @@ public class AddDoorActivity extends AppCompatActivity {
         //Récupère les rooms
         arrayList = RoomManager.getInstance().getArrayListRooms();
 
+        getRoomList();
+
+
         if(direction.equals("N")){
             setNord();
         }else if(direction.equals("E")){
@@ -107,24 +113,17 @@ public class AddDoorActivity extends AppCompatActivity {
 
         //============================================================================================
 
-        getRoomList();
 
 
 
-        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getBaseContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(AddDoorActivity.this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+
             @Override
             public void onItemClick(View view, int position) {
-                Log.i("RECYCLERVIEW", " " + arrayList.size() + recyclerView.getChildCount() + position);
-                for (int i = 0; i < recyclerView.getChildCount(); i++) {
-                    if(recyclerView.getChildAt(i) != null){
-                        recyclerView.getChildAt(i).setBackgroundColor(Color.WHITE);
-                    }
+                if(!adapter.isChecked(position)){
+                    adapter.setChecked(position);
                 }
                 selectedRoom = arrayList.get(position);
-                    recyclerView.getChildAt(position).setBackgroundColor(Color.YELLOW);
-                    recyclerView.getChildAt(position).invalidate();
-
-
             }
             @Override
             public void onLongItemClick(View view, int position) {}
@@ -160,6 +159,14 @@ public class AddDoorActivity extends AppCompatActivity {
 
     }
 
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        arrayList = RoomManager.getInstance().getArrayListRooms();
+    }
+
     public void setNord(){
         if(arrayList.get(roomIndex).getMurNord().getBitmap() != null){
             imageView.setImageBitmap(arrayList.get(roomIndex).getMurNord().getBitmap());
@@ -191,15 +198,16 @@ public class AddDoorActivity extends AppCompatActivity {
     private void getRoomList() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MainAdapter(this, arrayList);
-        try {
+        recyclerView.setAdapter(adapter);
+        /*try {
             RoomManager.getInstance().printRooms(getBaseContext());
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
         for(RoomModel room : arrayList){
             Log.i("testRoomModel", room.toString());
-        }
-        recyclerView.setAdapter(adapter);
+        }*/
+
     }
 
 }

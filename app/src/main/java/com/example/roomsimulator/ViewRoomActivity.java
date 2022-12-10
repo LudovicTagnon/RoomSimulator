@@ -280,7 +280,7 @@ public class ViewRoomActivity extends AppCompatActivity {
                     BouttonsDuMur.get(i).setY(door.getPosition().top);
                     BouttonsDuMur.get(i).setBackgroundColor(Color.YELLOW);
                     BouttonsDuMur.get(i).setClickable(true);
-                    Toast.makeText(ViewRoomActivity.this, "Portes affichées", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ViewRoomActivity.this, "Portes affichées", Toast.LENGTH_SHORT).show();
 
                     Log.i("TEST", "X=" + BouttonsDuMur.get(i).getX() + "Y=" + BouttonsDuMur.get(i).getY() + "W=" + BouttonsDuMur.get(i).getWidth() + "H=" + BouttonsDuMur.get(i).getHeight());
                     ViewRoomActivity.this.addContentView(BouttonsDuMur.get(i), BouttonsDuMur.get(i).getLayoutParams());
@@ -289,7 +289,7 @@ public class ViewRoomActivity extends AppCompatActivity {
                 }
             }
         }else{
-            Toast.makeText(ViewRoomActivity.this, "Pas de portes dans ce mur", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(ViewRoomActivity.this, "Pas de portes dans ce mur", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -304,7 +304,7 @@ public class ViewRoomActivity extends AppCompatActivity {
     private void ListenerPortes(ArrayList<Button> buttons, WallModel Mur) {
         for (Button b: buttons) {
             b.setOnClickListener((v)->{ // la porte s'ouvre
-                Toast.makeText(ViewRoomActivity.this, "Porte", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ViewRoomActivity.this, "Porte", Toast.LENGTH_SHORT).show();
 
                 int buttonIndex = buttons.indexOf(b);
 
