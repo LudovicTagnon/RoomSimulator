@@ -46,6 +46,10 @@ public class ViewRoomActivity extends AppCompatActivity {
         imageAffichee = findViewById(R.id.imageViewCourante);
         buttonGauche = findViewById(R.id.buttonLeft);
         buttonDroite = findViewById(R.id.buttonRight);
+        buttonGauche.setBackgroundColor(Color.CYAN);
+        buttonDroite.setBackgroundColor(Color.CYAN);
+
+
 
         //Récupère l'index de la pièce sélectionnée dans la recyclerview
         Bundle extras = getIntent().getExtras();

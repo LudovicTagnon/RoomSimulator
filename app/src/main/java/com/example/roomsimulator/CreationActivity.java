@@ -1,6 +1,7 @@
 package com.example.roomsimulator;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -39,7 +40,7 @@ public class CreationActivity extends AppCompatActivity {
         getRoomList();
         
         buttonNouvellePiece = findViewById(R.id.buttonNouvellePiece);
-
+        buttonNouvellePiece.setBackgroundColor(Color.CYAN);
         buttonNouvellePiece.setOnClickListener((v)->{
             boolean flag = true;
             for (RoomModel r: arrayList) {

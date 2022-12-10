@@ -21,6 +21,7 @@
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="88dp"/>
     <Button
             android:text="@string/nouvelle_piece"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buttonNouvellePiece"
@@ -50,7 +51,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@android:color/holo_green_light"
+            android:background="@color/teal_200"
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="20dp"
