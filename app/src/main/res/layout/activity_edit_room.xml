@@ -176,13 +176,14 @@
             app:layout_constraintEnd_toStartOf="@+id/imageViewEst"
     />
     <ImageButton
-            android:layout_width="72dp"
-            android:layout_height="69dp"
+            android:layout_width="58dp"
+            android:layout_height="57dp"
             app:srcCompat="@drawable/trash"
             android:id="@+id/imageButtonTrash"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="12dp"/>
+            android:layout_marginStart="12dp" android:layout_marginBottom="16dp"
+            tools:ignore="SpeakableTextPresentCheck"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

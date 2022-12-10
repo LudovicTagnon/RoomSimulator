@@ -5,6 +5,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,8 +22,8 @@ public class ViewRoomActivity extends AppCompatActivity {
 
     private ImageView imageAffichee;
 
-    private Button buttonGauche;
-    private Button buttonDroite;
+    private ImageButton buttonGauche;
+    private ImageButton buttonDroite;
 
     ArrayList<Button> buttonPorteNord = new ArrayList<>();
     ArrayList<Button> buttonPorteEst = new ArrayList<>();
@@ -44,8 +45,8 @@ public class ViewRoomActivity extends AppCompatActivity {
 
         //Lie les objets xml aux variables de l'activité
         imageAffichee = findViewById(R.id.imageViewCourante);
-        buttonGauche = findViewById(R.id.buttonLeft);
-        buttonDroite = findViewById(R.id.buttonRight);
+        buttonGauche = findViewById(R.id.imageButtonLeft);
+        buttonDroite = findViewById(R.id.imageButtonRight);
         buttonGauche.setBackgroundColor(Color.CYAN);
         buttonDroite.setBackgroundColor(Color.CYAN);
 
@@ -221,7 +222,9 @@ public class ViewRoomActivity extends AppCompatActivity {
 
             for (Button b : buttonsApres) { // Désactive les portes de l'ancien mur
                 b.setClickable(true);
-                b.setBackgroundColor(Color.YELLOW);
+                GradientDrawable gradientDrawable = new GradientDrawable();
+                gradientDrawable.setStroke(2, Color.YELLOW);
+                b.setBackground(gradientDrawable);
             }
         }
     }
@@ -283,13 +286,10 @@ public class ViewRoomActivity extends AppCompatActivity {
                     BouttonsDuMur.get(i).setLayoutParams(params);
                     BouttonsDuMur.get(i).setX(door.getPosition().left);
                     BouttonsDuMur.get(i).setY(door.getPosition().top);
-                    //BouttonsDuMur.get(i).setBackgroundColor(Color.YELLOW);
                     GradientDrawable gradientDrawable = new GradientDrawable();
                     gradientDrawable.setStroke(2, Color.YELLOW);
                     BouttonsDuMur.get(i).setBackground(gradientDrawable);
                     BouttonsDuMur.get(i).setClickable(true);
-                    //Toast.makeText(ViewRoomActivity.this, "Portes affichées", Toast.LENGTH_SHORT).show();
-
                     Log.i("TEST", "X=" + BouttonsDuMur.get(i).getX() + "Y=" + BouttonsDuMur.get(i).getY() + "W=" + BouttonsDuMur.get(i).getWidth() + "H=" + BouttonsDuMur.get(i).getHeight());
                     ViewRoomActivity.this.addContentView(BouttonsDuMur.get(i), BouttonsDuMur.get(i).getLayoutParams());
                     i++;
