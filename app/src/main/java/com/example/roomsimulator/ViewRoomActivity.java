@@ -1,6 +1,7 @@
 package com.example.roomsimulator;
 
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -278,7 +279,10 @@ public class ViewRoomActivity extends AppCompatActivity {
                     BouttonsDuMur.get(i).setLayoutParams(params);
                     BouttonsDuMur.get(i).setX(door.getPosition().left);
                     BouttonsDuMur.get(i).setY(door.getPosition().top);
-                    BouttonsDuMur.get(i).setBackgroundColor(Color.YELLOW);
+                    //BouttonsDuMur.get(i).setBackgroundColor(Color.YELLOW);
+                    GradientDrawable gradientDrawable = new GradientDrawable();
+                    gradientDrawable.setStroke(2, Color.YELLOW);
+                    BouttonsDuMur.get(i).setBackground(gradientDrawable);
                     BouttonsDuMur.get(i).setClickable(true);
                     //Toast.makeText(ViewRoomActivity.this, "Portes affichées", Toast.LENGTH_SHORT).show();
 
@@ -319,7 +323,7 @@ public class ViewRoomActivity extends AppCompatActivity {
                 for (DoorModel d: Mur.getPortes()) {
                     d.setAddedToView(false);
                 }
-                DestroyAllButtons(); //
+                DestroyAllButtons(); // Enlève les boutons de l'affichage et
                 setup_Murs_Portes(); // on affiche la nouvelle image/portes
 
             });
