@@ -18,6 +18,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -40,7 +41,6 @@ public class EditRoomActivity extends AppCompatActivity implements SensorEventLi
     private Sensor sensorMagneticField;
     private SensorManager SensorManager;
     private float DegreeStart = 0f;
-
     private float[] floatMagnetic = new float[3];
     private float[]  floatGravity = new float[3];
     private float[] floatOrientation = new float[3];
@@ -76,6 +76,9 @@ public class EditRoomActivity extends AppCompatActivity implements SensorEventLi
             arrayList.get(roomIndex).getMurSud().setImage(findViewById(R.id.imageViewSud));
             arrayList.get(roomIndex).getMurOuest().setImage(findViewById(R.id.imageViewOuest));
         }
+
+        TextView tv = findViewById(R.id.textViewTitre);
+        tv.setText("EDITEUR DE PIECE : " + arrayList.get(roomIndex).getName());
 
         //Lie les boutons xml aux boutons du code
         Button buttonImageNord = findViewById(R.id.buttonAjouterPhotoN);
@@ -169,6 +172,28 @@ public class EditRoomActivity extends AppCompatActivity implements SensorEventLi
 
         ImageButton trashButton = findViewById(R.id.imageButtonTrash);
         trashButton.setOnClickListener((v)->{
+            for (RoomModel r: arrayList) {
+                for (DoorModel d: r.getMurNord().getPortes()) {
+                    if (d.getNextRoom().equals(arrayList.get(roomIndex).getName())){
+                        r.getMurNord().getPortes().remove(d);
+                    }
+                }
+                for (DoorModel d: r.getMurEst().getPortes()) {
+                    if (d.getNextRoom().equals(arrayList.get(roomIndex).getName())){
+                        r.getMurNord().getPortes().remove(d);
+                    }
+                }
+                for (DoorModel d: r.getMurSud().getPortes()) {
+                    if (d.getNextRoom().equals(arrayList.get(roomIndex).getName())){
+                        r.getMurNord().getPortes().remove(d);
+                    }
+                }
+                for (DoorModel d: r.getMurOuest().getPortes()) {
+                    if (d.getNextRoom().equals(arrayList.get(roomIndex).getName())){
+                        r.getMurNord().getPortes().remove(d);
+                    }
+                }
+            }
             this.arrayList.remove(this.arrayList.get(roomIndex));
             finish();
         });

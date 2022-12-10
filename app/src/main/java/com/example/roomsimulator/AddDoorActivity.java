@@ -10,6 +10,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.*;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -156,6 +157,26 @@ public class AddDoorActivity extends AppCompatActivity {
                 }
             }
         });
+
+        ImageButton trashButton = findViewById(R.id.imageButtonTrash);
+        trashButton.setOnClickListener((v)->{
+            switch (direction) {
+                case "N":
+                    this.arrayList.get(roomIndex).getMurNord().setPortes(new ArrayList<DoorModel>());
+                    break;
+                case "E":
+                    this.arrayList.get(roomIndex).getMurEst().setPortes(new ArrayList<DoorModel>());
+                    break;
+                case "S":
+                    this.arrayList.get(roomIndex).getMurSud().setPortes(new ArrayList<DoorModel>());
+                    break;
+                case "O":
+                    this.arrayList.get(roomIndex).getMurOuest().setPortes(new ArrayList<DoorModel>());
+                    break;
+            }
+            finish();
+        });
+
 
     }
 

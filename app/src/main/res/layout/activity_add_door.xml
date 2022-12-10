@@ -18,8 +18,8 @@
             app:layout_constraintTop_toBottomOf="@+id/recycler_view_rooms"
             app:layout_constraintBottom_toBottomOf="parent"/>
     <ImageView
-            android:layout_width="400dp"
-            android:layout_height="400dp"
+            android:layout_width="403dp"
+            android:layout_height="446dp"
             app:srcCompat="@drawable/room"
             android:id="@+id/imageViewAddDoor"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,16 +27,16 @@
             app:layout_constraintTop_toTopOf="parent"
     />
     <SurfaceView
-            android:layout_width="400dp"
-            android:layout_height="400dp"
+            android:layout_width="405dp"
+            android:layout_height="446dp"
             android:id="@+id/surfaceView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageViewAddDoor"
     />
     <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="324dp"
-            android:layout_height="243dp"
+            android:layout_width="322dp"
+            android:layout_height="175dp"
             android:id="@+id/recycler_view_rooms"
             tools:listitem="@layout/item_room"
             tools:ignore="MissingConsraints"
@@ -46,5 +46,14 @@
             app:layout_constraintTop_toBottomOf="@+id/imageViewAddDoor"
             android:layout_marginTop="24dp"
     />
+    <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="66dp"
+            app:srcCompat="@drawable/trash"
+            android:id="@+id/imageButtonTrash"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="12dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
