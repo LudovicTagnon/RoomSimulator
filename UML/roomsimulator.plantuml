@@ -1,0 +1,155 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class AddDoorActivity {
+  # onResume(): void
+  + setNord(): void
+  + setEst(): void
+  + setSud(): void
+  - getRoomList(): void
+  # onCreate(Bundle): void
+  + setOuest(): void
+}
+class CanvasView {
+  + reDraw(): void
+  + onDraw(Canvas): void
+}
+class CreationActivity {
+  # onResume(): void
+  # onCreate(Bundle): void
+  - getRoomList(): void
+  + onBackPressed(): void
+}
+class DoorModel {
+  - position: Rect
+  - nextRoom: String
+  - isAddedToView: boolean
+   position: Rect
+   nextRoom: String
+   isAddedToView: boolean
+}
+class EditRoomActivity {
+  + onSensorChanged(SensorEvent): void
+  # onCreate(Bundle): void
+  # onPause(): void
+  # onResume(): void
+  + onAccuracyChanged(Sensor, int): void
+}
+class Enregistrement {
+  + fileExist(Context, String): boolean
+  + load(Context, String): void
+  + save(Context, String): String
+  + loadImages(Context): void
+  + getFileContent(FileInputStream): String
+}
+class MainActivity {
+  # onCreate(Bundle): void
+}
+class MainAdapter {
+  + isChecked(int): boolean
+  + onCreateViewHolder(ViewGroup, int): ViewHolder
+  + onBindViewHolder(ViewHolder, int): void
+   checked: int
+   itemCount: int
+}
+class NavigationActivity {
+  - getRoomList(): void
+  # onCreate(Bundle): void
+}
+interface OnItemClickListener << interface >> {
+  + onLongItemClick(View, int): void
+  + onItemClick(View, int): void
+}
+class PhotoActivity {
+  # onCreate(Bundle): void
+  # onActivityResult(int, int, Intent): void
+}
+class RecyclerItemClickListener {
+  + onTouchEvent(RecyclerView, MotionEvent): void
+  + onInterceptTouchEvent(RecyclerView, MotionEvent): boolean
+  + onRequestDisallowInterceptTouchEvent(boolean): void
+}
+class RoomManager {
+  - arrayListRooms: ArrayList<RoomModel>
+  - instance: RoomManager
+  + printRooms(Context): void
+   arrayListRooms: ArrayList<RoomModel>
+   instance: RoomManager
+}
+class RoomModel {
+  - murOuest: WallModel
+  - name: String
+  - murEst: WallModel
+  - murNord: WallModel
+  - murSud: WallModel
+  + toString(): String
+   murNord: WallModel
+   name: String
+   murOuest: WallModel
+   murSud: WallModel
+   murEst: WallModel
+}
+class ViewHolder
+class ViewRoomActivity {
+  + changeImage(String, String): void
+  + appelBoutonGauche(): void
+  # onCreate(Bundle): void
+  - setup_Murs_Portes(): void
+  + onBackPressed(): void
+  - DestroyAllButtons(): void
+  + setupPortes(): void
+  + appelBoutonDroit(): void
+  - ListenerPortes(ArrayList<Button>, WallModel): void
+   imageMurChoisi: String
+}
+class WallModel {
+  - image: ImageView
+  - portes: ArrayList<DoorModel>
+  - direction: String
+  - bitmap: Bitmap
+   image: ImageView
+   portes: ArrayList<DoorModel>
+   direction: String
+   bitmap: Bitmap
+}
+
+AddDoorActivity           "1" *-[#595959,plain]-> "canvasView\n1" CanvasView                
+AddDoorActivity            -[#595959,dashed]->  CanvasView                : "«create»"
+AddDoorActivity            -[#595959,dashed]->  DoorModel                 : "«create»"
+AddDoorActivity           "1" *-[#595959,plain]-> "adapter\n1" MainAdapter               
+AddDoorActivity            -[#595959,dashed]->  MainAdapter               : "«create»"
+AddDoorActivity            -[#595959,dashed]->  RecyclerItemClickListener : "«create»"
+AddDoorActivity           "1" *-[#595959,plain]-> "arrayList\n*" RoomModel                 
+CreationActivity           -[#595959,dashed]->  Enregistrement            : "«create»"
+CreationActivity          "1" *-[#595959,plain]-> "adapter\n1" MainAdapter               
+CreationActivity           -[#595959,dashed]->  MainAdapter               : "«create»"
+CreationActivity           -[#595959,dashed]->  RecyclerItemClickListener : "«create»"
+CreationActivity          "1" *-[#595959,plain]-> "arrayList\n*" RoomModel                 
+CreationActivity           -[#595959,dashed]->  RoomModel                 : "«create»"
+EditRoomActivity          "1" *-[#595959,plain]-> "arrayList\n*" RoomModel                 
+Enregistrement             -[#595959,dashed]->  DoorModel                 : "«create»"
+Enregistrement             -[#595959,dashed]->  RoomModel                 : "«create»"
+Enregistrement            "1" *-[#595959,plain]-> "pieces\n*" RoomModel                 
+Enregistrement             -[#595959,dashed]->  WallModel                 : "«create»"
+MainActivity               -[#595959,dashed]->  Enregistrement            : "«create»"
+MainAdapter               "1" *-[#595959,plain]-> "arrayList\n*" RoomModel                 
+MainAdapter                -[#595959,dashed]->  ViewHolder                : "«create»"
+NavigationActivity        "1" *-[#595959,plain]-> "adapter\n1" MainAdapter               
+NavigationActivity         -[#595959,dashed]->  MainAdapter               : "«create»"
+NavigationActivity         -[#595959,dashed]->  RecyclerItemClickListener : "«create»"
+NavigationActivity        "1" *-[#595959,plain]-> "arrayList\n*" RoomModel                 
+OnItemClickListener        +-[#820000,plain]-  RecyclerItemClickListener 
+PhotoActivity             "1" *-[#595959,plain]-> "currentRoom\n1" RoomModel                 
+RecyclerItemClickListener "1" *-[#595959,plain]-> "mListener\n1" OnItemClickListener       
+RoomManager                -[#595959,dashed]->  Enregistrement            : "«create»"
+RoomManager               "1" *-[#595959,plain]-> "arrayListRooms\n*" RoomModel                 
+RoomModel                 "1" *-[#595959,plain]-> "murNord\n1" WallModel                 
+RoomModel                  -[#595959,dashed]->  WallModel                 : "«create»"
+ViewHolder                 +-[#820000,plain]-  MainAdapter               
+ViewRoomActivity          "1" *-[#595959,plain]-> "arrayList\n*" RoomModel                 
+ViewRoomActivity          "1" *-[#595959,plain]-> "MurNord\n1" WallModel                 
+WallModel                 "1" *-[#595959,plain]-> "portes\n*" DoorModel                 
+@enduml

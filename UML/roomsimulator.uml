@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/home/kudovic/Desktop/L3/S5/DevMobile/Project/GIT/PROJET/RoomSimulator/app/src/main/java/com/example/roomsimulator</OriginalElement>
+  <nodes>
+    <node x="1228.542190222176" y="1005.7176728695854">com.example.roomsimulator.Enregistrement</node>
+    <node x="1324.1686699613438" y="1403.860174697184">com.example.roomsimulator.MainActivity</node>
+    <node x="1104.6566660531964" y="-67.95745660519287">com.example.roomsimulator.RecyclerItemClickListener.OnItemClickListener</node>
+    <node x="1265.5126489731517" y="1739.3393100935725">com.example.roomsimulator.WallModel</node>
+    <node x="1723.1033670271759" y="1099.8183635425353">com.example.roomsimulator.PhotoActivity</node>
+    <node x="972.1566660531964" y="374.0425433948071">com.example.roomsimulator.RecyclerItemClickListener</node>
+    <node x="246.018527249449" y="947.3032895128626">com.example.roomsimulator.RoomManager</node>
+    <node x="-186.49854279913177" y="1105.3487504036289">com.example.roomsimulator.CreationActivity</node>
+    <node x="641.3534382761729" y="1787.940849359659">com.example.roomsimulator.DoorModel</node>
+    <node x="2249.3758995099192" y="1198.7521402684247">com.example.roomsimulator.AddDoorActivity</node>
+    <node x="1738.3143210857509" y="1426.6525697532645">com.example.roomsimulator.CanvasView</node>
+    <node x="214.79264628325893" y="1350.7400630586815">com.example.roomsimulator.MainAdapter</node>
+    <node x="304.4119560645004" y="260.95153118023774">com.example.roomsimulator.EditRoomActivity</node>
+    <node x="834.0358461200999" y="711.7340346298649">com.example.roomsimulator.NavigationActivity</node>
+    <node x="1693.5509140465917" y="145.48136560606946">com.example.roomsimulator.ViewRoomActivity</node>
+    <node x="375.29264628325893" y="1262.2400630586815">com.example.roomsimulator.MainAdapter.ViewHolder</node>
+    <node x="850.7370778256809" y="1068.6242690364452">com.example.roomsimulator.RoomModel</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.example.roomsimulator.ViewRoomActivity" target="com.example.roomsimulator.WallModel" relationship="TO_ONE">
+      <point x="-271.9999140465918" y="-3.6560606946522967E-4" />
+      <point x="1678.0" y="373.481" />
+      <point x="1678.0" y="1927.339" />
+      <point x="175.0003510268482" y="-3.1009357257971715E-4" />
+    </edge>
+    <edge source="com.example.roomsimulator.CreationActivity" target="com.example.roomsimulator.MainAdapter" relationship="TO_ONE">
+      <point x="141.99954279913177" y="-53.848750403628856" />
+      <point x="186.0" y="1159.0" />
+      <point x="186.0" y="1493.74" />
+      <point x="-265.9996462832589" y="14.999936941318538" />
+    </edge>
+    <edge source="com.example.roomsimulator.Enregistrement" target="com.example.roomsimulator.RoomModel" relationship="TO_MANY">
+      <point x="-1.9022217611563974E-4" y="-127.49967286958542" />
+      <point x="1445.042" y="962.0" />
+      <point x="791.0" y="962.0" />
+      <point x="791.0" y="1317.124" />
+      <point x="-137.00007782568093" y="-2.690364451609639E-4" />
+    </edge>
+    <edge source="com.example.roomsimulator.AddDoorActivity" target="com.example.roomsimulator.RoomModel" relationship="TO_MANY">
+      <point x="1.0049008096757461E-4" y="-167.50014026842473" />
+      <point x="2391.376" y="962.0" />
+      <point x="791.0" y="962.0" />
+      <point x="791.0" y="1317.124" />
+      <point x="-137.00007782568093" y="-2.690364451609639E-4" />
+    </edge>
+    <edge source="com.example.roomsimulator.AddDoorActivity" target="com.example.roomsimulator.CanvasView" relationship="CREATE">
+      <point x="-142.0" y="127.90042948483983" />
+      <point x="137.5" y="0.0" />
+    </edge>
+    <edge source="com.example.roomsimulator.CreationActivity" target="com.example.roomsimulator.RoomModel" relationship="TO_MANY">
+      <point x="-4.572008682330875E-4" y="-107.49975040362892" />
+      <point x="-44.499" y="898.0" />
+      <point x="791.0" y="898.0" />
+      <point x="791.0" y="1317.124" />
+      <point x="-137.00007782568093" y="-2.690364451609639E-4" />
+    </edge>
+    <edge source="com.example.roomsimulator.NavigationActivity" target="com.example.roomsimulator.RoomModel" relationship="TO_MANY">
+      <point x="-145.49984612009996" y="-3.4629864899216045E-5" />
+      <point x="791.0" y="779.234" />
+      <point x="791.0" y="1317.124" />
+      <point x="-137.00007782568093" y="-2.690364451609639E-4" />
+    </edge>
+    <edge source="com.example.roomsimulator.ViewRoomActivity" target="com.example.roomsimulator.RoomModel" relationship="TO_MANY">
+      <point x="8.595340818828845E-5" y="227.99963439393053" />
+      <point x="1965.551" y="898.0" />
+      <point x="791.0" y="898.0" />
+      <point x="791.0" y="1317.124" />
+      <point x="-137.00007782568093" y="-2.690364451609639E-4" />
+    </edge>
+    <edge source="com.example.roomsimulator.WallModel" target="com.example.roomsimulator.DoorModel" relationship="TO_MANY">
+      <point x="-175.0" y="14.99968990642742" />
+      <point x="149.0" y="6.398150640340873" />
+    </edge>
+    <edge source="com.example.roomsimulator.Enregistrement" target="com.example.roomsimulator.RoomModel" relationship="CREATE">
+      <point x="187.9708097778239" y="127.50032713041469" />
+      <point x="1633.013" y="1583.124" />
+      <point x="806.0" y="1583.124" />
+      <point x="806.0" y="1478.74" />
+      <point x="-137.00007782568093" y="161.61573096355482" />
+    </edge>
+    <edge source="com.example.roomsimulator.AddDoorActivity" target="com.example.roomsimulator.MainAdapter" relationship="TO_ONE">
+      <point x="30.000100490080968" y="-167.50014026842473" />
+      <point x="2421.376" y="694.234" />
+      <point x="186.0" y="694.234" />
+      <point x="186.0" y="1493.74" />
+      <point x="-265.9996462832589" y="14.999936941318538" />
+    </edge>
+    <edge source="com.example.roomsimulator.AddDoorActivity" target="com.example.roomsimulator.RecyclerItemClickListener" relationship="CREATE">
+      <point x="15.000100490080968" y="-167.50014026842473" />
+      <point x="2406.376" y="873.0" />
+      <point x="1290.157" y="873.0" />
+      <point x="3.339468034937454E-4" y="87.50045660519288" />
+    </edge>
+    <edge source="com.example.roomsimulator.AddDoorActivity" target="com.example.roomsimulator.CanvasView" relationship="TO_ONE">
+      <point x="-142.0" y="142.90042948483983" />
+      <point x="137.5" y="15.0" />
+    </edge>
+    <edge source="com.example.roomsimulator.NavigationActivity" target="com.example.roomsimulator.MainAdapter" relationship="CREATE">
+      <point x="-145.49984612009996" y="14.9999653701351" />
+      <point x="157.0" y="794.234" />
+      <point x="157.0" y="1478.74" />
+      <point x="-265.9996462832589" y="-6.305868146228022E-5" />
+    </edge>
+    <edge source="com.example.roomsimulator.CreationActivity" target="com.example.roomsimulator.MainAdapter" relationship="CREATE">
+      <point x="141.99954279913177" y="2.4959637107713206E-4" />
+      <point x="157.0" y="1212.849" />
+      <point x="157.0" y="1478.74" />
+      <point x="-265.9996462832589" y="-6.305868146228022E-5" />
+    </edge>
+    <edge source="com.example.roomsimulator.EditRoomActivity" target="com.example.roomsimulator.RoomModel" relationship="TO_MANY">
+      <point x="212.00004393549966" y="4.6881976226131883E-4" />
+      <point x="791.0" y="388.452" />
+      <point x="791.0" y="1317.124" />
+      <point x="-137.00007782568093" y="-2.690364451609639E-4" />
+    </edge>
+    <edge source="com.example.roomsimulator.CreationActivity" target="com.example.roomsimulator.Enregistrement" relationship="CREATE">
+      <point x="14.999542799131774" y="-107.49975040362892" />
+      <point x="-29.498999999999995" y="925.0" />
+      <point x="1460.042" y="925.0" />
+      <point x="14.999809777823884" y="-127.49967286958542" />
+    </edge>
+    <edge source="com.example.roomsimulator.RoomModel" target="com.example.roomsimulator.WallModel" relationship="CREATE">
+      <point x="136.99992217431918" y="14.999730963554839" />
+      <point x="1186.0" y="1332.124" />
+      <point x="1186.0" y="1927.339" />
+      <point x="-174.9996489731518" y="-3.1009357257971715E-4" />
+    </edge>
+    <edge source="com.example.roomsimulator.CreationActivity" target="com.example.roomsimulator.RoomModel" relationship="CREATE">
+      <point x="-4.572008682330875E-4" y="107.50024959637108" />
+      <point x="-44.499" y="1336.0" />
+      <point x="806.0" y="1336.0" />
+      <point x="806.0" y="1478.74" />
+      <point x="-137.00007782568093" y="161.61573096355482" />
+    </edge>
+    <edge source="com.example.roomsimulator.Enregistrement" target="com.example.roomsimulator.WallModel" relationship="CREATE">
+      <point x="-216.50019022217612" y="3.271304146892362E-4" />
+      <point x="1186.0" y="1133.218" />
+      <point x="1186.0" y="1927.339" />
+      <point x="-174.9996489731518" y="-3.1009357257971715E-4" />
+    </edge>
+    <edge source="com.example.roomsimulator.MainAdapter.ViewHolder" target="com.example.roomsimulator.MainAdapter" relationship="INNER_CLASS">
+      <point x="0.0" y="24.5" />
+      <point x="0.0" y="-128.0" />
+    </edge>
+    <edge source="com.example.roomsimulator.RoomManager" target="com.example.roomsimulator.RoomModel" relationship="TO_MANY">
+      <point x="4.727505510118135E-4" y="-128.50028951286265" />
+      <point x="467.519" y="898.0" />
+      <point x="791.0" y="898.0" />
+      <point x="791.0" y="1317.124" />
+      <point x="-137.00007782568093" y="-2.690364451609639E-4" />
+    </edge>
+    <edge source="com.example.roomsimulator.MainAdapter" target="com.example.roomsimulator.MainAdapter.ViewHolder" relationship="CREATE">
+      <point x="15.0" y="-128.0" />
+      <point x="15.0" y="24.5" />
+    </edge>
+    <edge source="com.example.roomsimulator.RecyclerItemClickListener" target="com.example.roomsimulator.RecyclerItemClickListener.OnItemClickListener" relationship="TO_ONE">
+      <point x="15.0" y="-87.5" />
+      <point x="15.0" y="67.5" />
+    </edge>
+    <edge source="com.example.roomsimulator.MainActivity" target="com.example.roomsimulator.Enregistrement" relationship="CREATE">
+      <point x="-141.99966996134367" y="-1.7469718409302004E-4" />
+      <point x="1142.237" y="1451.36" />
+      <point x="1142.237" y="925.0" />
+      <point x="1460.042" y="925.0" />
+      <point x="14.999809777823884" y="-127.49967286958542" />
+    </edge>
+    <edge source="com.example.roomsimulator.NavigationActivity" target="com.example.roomsimulator.MainAdapter" relationship="TO_ONE">
+      <point x="-145.49984612009996" y="-15.0000346298649" />
+      <point x="186.0" y="764.234" />
+      <point x="186.0" y="1493.74" />
+      <point x="-265.9996462832589" y="14.999936941318538" />
+    </edge>
+    <edge source="com.example.roomsimulator.Enregistrement" target="com.example.roomsimulator.DoorModel" relationship="CREATE">
+      <point x="216.49980977782388" y="3.271304146892362E-4" />
+      <point x="1701.051" y="1133.218" />
+      <point x="1701.051" y="1682.0" />
+      <point x="790.353" y="1682.0" />
+      <point x="-4.3827617298575205E-4" y="-147.99984935965904" />
+    </edge>
+    <edge source="com.example.roomsimulator.RoomManager" target="com.example.roomsimulator.Enregistrement" relationship="CREATE">
+      <point x="-14.999527249448988" y="-128.50028951286265" />
+      <point x="452.519" y="925.0" />
+      <point x="1460.042" y="925.0" />
+      <point x="14.999809777823884" y="-127.49967286958542" />
+    </edge>
+    <edge source="com.example.roomsimulator.CreationActivity" target="com.example.roomsimulator.RecyclerItemClickListener" relationship="CREATE">
+      <point x="-15.000457200868226" y="-107.49975040362892" />
+      <point x="-59.498999999999995" y="873.0" />
+      <point x="1290.157" y="873.0" />
+      <point x="3.339468034937454E-4" y="87.50045660519288" />
+    </edge>
+    <edge source="com.example.roomsimulator.RoomModel" target="com.example.roomsimulator.WallModel" relationship="TO_ONE">
+      <point x="136.99992217431918" y="-2.690364451609639E-4" />
+      <point x="1678.0" y="1317.124" />
+      <point x="1678.0" y="1927.339" />
+      <point x="175.0003510268482" y="-3.1009357257971715E-4" />
+    </edge>
+    <edge source="com.example.roomsimulator.PhotoActivity" target="com.example.roomsimulator.RoomModel" relationship="TO_ONE">
+      <point x="-3.670271757982846E-4" y="-67.5003635425353" />
+      <point x="1927.103" y="962.0" />
+      <point x="791.0" y="962.0" />
+      <point x="791.0" y="1317.124" />
+      <point x="-137.00007782568093" y="-2.690364451609639E-4" />
+    </edge>
+    <edge source="com.example.roomsimulator.RecyclerItemClickListener.OnItemClickListener" target="com.example.roomsimulator.RecyclerItemClickListener" relationship="INNER_CLASS">
+      <point x="0.0" y="67.5" />
+      <point x="0.0" y="-87.5" />
+    </edge>
+    <edge source="com.example.roomsimulator.MainAdapter" target="com.example.roomsimulator.RoomModel" relationship="TO_MANY">
+      <point x="266.0003537167411" y="-6.305868146228022E-5" />
+      <point x="791.0" y="1478.74" />
+      <point x="791.0" y="1317.124" />
+      <point x="-137.00007782568093" y="-2.690364451609639E-4" />
+    </edge>
+    <edge source="com.example.roomsimulator.AddDoorActivity" target="com.example.roomsimulator.MainAdapter" relationship="CREATE">
+      <point x="1.0049008096757461E-4" y="167.49985973157527" />
+      <point x="2391.376" y="1624.24" />
+      <point x="157.0" y="1624.24" />
+      <point x="157.0" y="1478.74" />
+      <point x="-265.9996462832589" y="-6.305868146228022E-5" />
+    </edge>
+    <edge source="com.example.roomsimulator.AddDoorActivity" target="com.example.roomsimulator.DoorModel" relationship="CREATE">
+      <point x="15.000100490080968" y="167.49985973157527" />
+      <point x="2406.376" y="1682.0" />
+      <point x="790.353" y="1682.0" />
+      <point x="-4.3827617298575205E-4" y="-147.99984935965904" />
+    </edge>
+    <edge source="com.example.roomsimulator.NavigationActivity" target="com.example.roomsimulator.RecyclerItemClickListener" relationship="CREATE">
+      <point x="1.538799000400104E-4" y="67.4999653701351" />
+      <point x="979.536" y="873.0" />
+      <point x="1290.157" y="873.0" />
+      <point x="3.339468034937454E-4" y="87.50045660519288" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.39854809437386574" showDependencies="true" x="1713.4234972677596" y="1015.8834244080147" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
